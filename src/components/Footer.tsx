@@ -55,15 +55,7 @@ export default function Footer() {
           </button>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-slate-200/60 dark:border-slate-800/60 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-slate-400 gap-4">
-          <div>
-            &copy; {new Date().getFullYear()} {PERSONAL_INFO.name}. All Rights Reserved.
-          </div>
-          <div className="flex items-center gap-1 text-slate-500 dark:text-slate-400">
-            Built with Next.js, Tailwind CSS &amp; TypeScript
-          </div>
-        </div>
+        
       </div>
     </footer>
   );

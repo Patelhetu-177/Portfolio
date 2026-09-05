@@ -2,6 +2,19 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif,
+    system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular,
+    "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --shadow-input:
+    0px 2px 3px -1px rgba(0, 0, 0, 0.1),
+    0px 1px 0px 0px rgba(25, 28, 33, 0.02),
+    0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+}
+
 @layer base {
   :root {
     --bg-primary: #ffffff;
@@ -38,70 +51,93 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   transition: background-color 0.25s ease, color 0.25s ease;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-sans);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 9999px;
-}
-.dark ::-webkit-scrollbar-thumb {
-  background: #334155;
+/* Hide Navbar when modal is open */
+body.modal-is-open .navbar-floating {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-40px) !important;
+  transition: all 0.3s ease-in-out !important;
 }
 
-/* Glassmorphic Panel Styles */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
 }
 
-.dark .glass-panel {
-  background: rgba(11, 19, 41, 0.7);
-  border: 1px solid rgba(51, 65, 85, 0.6);
+/* Custom terminal scrollbars */
+.terminal-scroll::-webkit-scrollbar {
+  width: 6px;
 }
 
+.terminal-scroll::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.2);
+  border-radius: 3px;
+}
+
+.terminal-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.4);
+}
+
+/* Smooth custom cursor & selection */
+::selection {
+  background-color: rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
+}
+
+/* Animated gradient text helper */
 .gradient-text {
-  background: linear-gradient(135deg, #0284c7 0%, #4f46e5 50%, #9333ea 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.dark .gradient-text {
   background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Animated Grid Background */
-.bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(100, 116, 139, 0.18) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(100, 116, 139, 0.18) 1px, transparent 1px);
+/* Moving Border animation */
+@keyframes moving-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.dark .bg-grid-pattern {
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+.animate-moving-border {
+  animation: moving-border 6s linear infinite;
 }
 
-/* Marquee Scroll */
+/* Infinite Marquee animations */
 @keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
   to {
-    transform: translate(calc(-50% - 0.5rem));
+    transform: translateX(calc(-50% - 0.5rem));
   }
 }
 
 .animate-scroll {
   animation: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+}
+
+/* Image loading shimmer */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
 }

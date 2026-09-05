@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Github } from "@/components/Icons";
 import ProjectModal from "./ProjectModal";
+import ProjectImage from "@/components/ui/ProjectImage";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 
 export default function Projects() {
@@ -61,10 +62,10 @@ export default function Projects() {
                 
                 {/* 3D Project Image */}
                 <CardItem translateZ="100" className="w-full relative aspect-video rounded-2xl overflow-hidden bg-slate-950 shadow-md">
-                  <img
+                  <ProjectImage
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover/card:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-black/20 to-transparent opacity-60 group-hover/card:opacity-40 transition-opacity" />
 

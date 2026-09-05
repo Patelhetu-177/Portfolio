@@ -27,28 +27,24 @@ const FLIP_MESSAGES = [
 
 const HERO_CARDS = [
   {
-    title: "FirstBookIt",
-    tag: "Mobile & Web",
-    image: "/assets/firstbookit.png",
-    className: "top-[4%] left-[4%] rotate-[-6deg]",
+    title: "Full-Stack Engineer",
+    image: "/assets/1.jpeg",
+    className: "top-[5%] left-[5%] rotate-[-6deg]",
   },
   {
-    title: "AvatarAI",
-    tag: "GenAI Suite",
-    image: "/assets/avatarai.png",
-    className: "top-[38%] left-[16%] z-20 rotate-[4deg]",
-  },
-  {
-    title: "Hetu Patel",
-    tag: "PDEU CGPA 8.8",
+    title: "System Architect",
     image: "/assets/about-pic.jpg",
-    className: "top-[8%] right-[4%] rotate-[8deg]",
+    className: "top-[40%] left-[18%] z-10 rotate-[4deg]",
   },
   {
-    title: "EventSphere",
-    tag: "Full Stack",
-    image: "/assets/eventsphere.png",
-    className: "top-[46%] right-[8%] rotate-[-4deg]",
+    title: "Algorithmic Mind",
+    image: "/assets/2.jpeg",
+    className: "top-[10%] right-[8%] rotate-[8deg]",
+  },
+  {
+    title: "Tech Innovator",
+    image: "/assets/3.png",
+    className: "top-[48%] right-[10%] rotate-[-5deg]",
   },
 ];
 
@@ -78,7 +74,7 @@ const MOVING_HIGHLIGHTS: MovingCardItem[] = [
     name: "6+ Production Apps",
     title: "Web, Mobile & AI",
     badge: "Live Platforms",
-    quote: "Engineered scalable platforms including FirstBookIt, AvatarAI, EventSphere, Hotel PMS, and KARBYNX Carbon MRV infrastructure.",
+    quote: "Engineered scalable platforms including FirstBookIt, AvatarAI, EventSphere and KARBYNX Carbon MRV infrastructure.",
     icon: Layers,
   },
   {
@@ -106,7 +102,7 @@ const MOVING_HIGHLIGHTS: MovingCardItem[] = [
     name: "Enterprise Production",
     title: "Vikartr Technologies LLP",
     badge: "Industry Work",
-    quote: "Built multi-tenant Hotel PMS with RBAC, Ethicare Financial Services calculators, and KARBYNX satellite MRV platform.",
+    quote: "Built Ethicare Financial Services calculators, and KARBYNX satellite MRV platform.",
     icon: Briefcase,
   },
 ];
@@ -133,7 +129,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Flipping Board + Clean Headline & AttendMetric-styled Buttons */}
           <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left space-y-5">
-            {/* Flipping Keyboard Board - Slightly Smaller & Sleek */}
+            {/* Flipping Keyboard Board */}
             <div className="w-full flex justify-center lg:justify-start">
               <TextFlippingBoard
                 text={FLIP_MESSAGES[msgIdx]}
@@ -180,26 +176,19 @@ export default function Hero() {
 
           {/* Right Column: 4-Image Interactive Draggable Showcase */}
           <div className="lg:col-span-6 flex flex-col items-center justify-center">
-            <div className="relative h-[440px] w-full sm:h-[480px] lg:h-[500px] max-w-[560px]">
+            <div className="relative h-[480px] w-full sm:h-[520px] lg:h-[540px] max-w-[560px]">
               <DraggableCardContainer className="relative h-full w-full">
                 {HERO_CARDS.map((item) => (
                   <DraggableCardBody key={item.title} className={item.className}>
-                    <div className="overflow-hidden rounded-2xl bg-white p-2.5 shadow-xl ring-1 ring-black/5 dark:bg-[#1a2b42] dark:ring-white/10 w-44 sm:w-52">
-                      <div className="relative h-32 sm:h-38 w-full overflow-hidden rounded-xl bg-slate-950">
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          className="pointer-events-none h-full w-full object-cover"
-                        />
-                      </div>
-                      <div className="mt-2.5 px-1 flex items-center justify-between">
-                        <h3 className="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 truncate">
-                          {item.title}
-                        </h3>
-                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 dark:bg-[#0f1824] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                          {item.tag}
-                        </span>
-                      </div>
+                    <div className="overflow-hidden rounded-2xl bg-white p-2.5 shadow-2xl ring-1 ring-black/5 dark:bg-slate-800 dark:ring-white/10">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="pointer-events-none h-44 w-44 object-cover object-top rounded-xl sm:h-52 sm:w-52"
+                      />
+                      <h3 className="mt-2.5 text-center text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                        {item.title}
+                      </h3>
                     </div>
                   </DraggableCardBody>
                 ))}

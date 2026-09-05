@@ -62,7 +62,7 @@ export default function Navbar() {
     <>
       {/* Floating Header Container */}
       <div
-        className={`pointer-events-none fixed left-0 top-0 z-[100] flex w-full flex-col items-center justify-center ${
+        className={`navbar-floating pointer-events-none fixed left-0 top-0 z-[100] flex w-full flex-col items-center justify-center ${
           scrolled ? "pt-3 md:pt-4" : "pt-0 md:pt-2"
         }`}
         style={{ transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)" }}
