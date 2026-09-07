@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Project } from "@/data/portfolioData";
-import { ExternalLink, CheckCircle2, Sparkles, Layers, Terminal } from "lucide-react";
+import { ExternalLink, CheckCircle2, Sparkles, Layers } from "lucide-react";
 import { Github } from "@/components/Icons";
 import {
   Modal,
@@ -10,7 +10,6 @@ import {
   ModalContent,
   ModalFooter,
 } from "@/components/ui/animated-modal";
-import ProjectImage from "@/components/ui/ProjectImage";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -22,8 +21,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <Modal open={!!project} setOpen={(open) => { if (!open) onClose(); }}>
-      <ModalBody className="max-w-3xl">
-        <ModalContent className="space-y-6 min-h-0">
+      <ModalBody className="max-w-3xl sm:max-w-4xl">
+        <ModalContent className="space-y-6">
           {/* Header Bar */}
           <div>
             <div className="flex items-center gap-2 mb-2">
@@ -39,14 +38,14 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </p>
           </div>
 
-          {/* Screenshot Showcase */}
-          <div className="relative rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-slate-950 aspect-video max-h-[46vh] shadow-md">
-            <ProjectImage
+          {/* Full Image Showcase — Perfectly Fits Portrait Mobile & Landscape Desktop */}
+          <div className="relative w-full rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-800 bg-slate-900/60 dark:bg-[#070c16] flex items-center justify-center p-3 sm:p-5 shadow-xl">
+            <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-contain"
+              className="w-auto h-auto max-h-[460px] sm:max-h-[520px] max-w-full object-contain rounded-xl block mx-auto drop-shadow-2xl"
+              loading="eager"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent pointer-events-none" />
           </div>
 
           {/* Overview Description */}

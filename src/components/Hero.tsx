@@ -18,11 +18,11 @@ import { DraggableCardContainer, DraggableCardBody } from "@/components/ui/Dragg
 import { InfiniteMovingCards, MovingCardItem } from "@/components/ui/infinite-moving-cards";
 
 const FLIP_MESSAGES = [
-  "REACT NATIVE \nEXPO SPECIALIST",
-  "LEETCODE 1572 \nCODECHEF 3 STAR",
-  "NEXTJS MERN \nAWS N8N GENAI",
-  "FULL STACK MERN \nSCALABLE SYSTEMS",
-  "DISTRIBUTED CODE \nENTERPRISE RBAC",
+  "FULL-STACK DEVELOPER\n MERN STACK",
+  "MOBILE APP ENGINEER\nREACT NATIVE & EXPO",
+  "GENAI & AUTOMATIONS\n N8N WORKFLOWS",
+  "LEETCODE 1572 RATING\n450+ PROBLEMS SOLVED",
+  "CODECHEF 3-STAR CODER\n1653 CONTEST RATING",
 ];
 
 const HERO_CARDS = [
@@ -115,7 +115,7 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(nextMessage, 4500);
+    const timer = setInterval(nextMessage, 3600);
     return () => clearInterval(timer);
   }, [nextMessage]);
 
@@ -133,7 +133,7 @@ export default function Hero() {
             <div className="w-full flex justify-center lg:justify-start">
               <TextFlippingBoard
                 text={FLIP_MESSAGES[msgIdx]}
-                className="transform scale-[0.78] sm:scale-[0.88] origin-center lg:origin-left max-w-[500px]"
+                className="max-w-[480px] w-full"
               />
             </div>
 

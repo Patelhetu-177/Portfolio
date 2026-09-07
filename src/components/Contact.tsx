@@ -67,7 +67,8 @@ export default function Contact() {
     subject: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const triggerConfetti = () => {
     try {
@@ -81,16 +82,36 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("submitting");
+    setErrorMessage("");
 
-    setTimeout(() => {
-      setStatus("success");
-      triggerConfetti();
-      setFormState({ firstname: "", lastname: "", email: "", subject: "", message: "" });
-      setTimeout(() => setStatus("idle"), 5000);
-    }, 800);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setStatus("success");
+        triggerConfetti();
+        setFormState({ firstname: "", lastname: "", email: "", subject: "", message: "" });
+        setTimeout(() => setStatus("idle"), 6000);
+      } else {
+        setStatus("error");
+        setErrorMessage(data.error || "Failed to send message. Please reach out directly via email.");
+        setTimeout(() => setStatus("idle"), 6000);
+      }
+    } catch (err) {
+      console.error("Form submit error:", err);
+      setStatus("error");
+      setErrorMessage("Network error. Please email me directly at " + PERSONAL_INFO.email);
+      setTimeout(() => setStatus("idle"), 6000);
+    }
   };
 
   return (
@@ -279,11 +300,19 @@ export default function Contact() {
                     <span className="flex items-center justify-center gap-1.5 text-emerald-400">
                       <Check className="w-4 h-4" /> Message Sent!
                     </span>
+                  ) : status === "error" ? (
+                    <span className="text-rose-400">Try Again</span>
                   ) : (
                     <span>Send Message &rarr;</span>
                   )}
                   <BottomGradient />
                 </button>
+
+                {status === "error" && errorMessage && (
+                  <p className="text-xs text-rose-500 dark:text-rose-400 text-center animate-fade-in mt-2">
+                    {errorMessage}
+                  </p>
+                )}
               </form>
             </div>
           </div>

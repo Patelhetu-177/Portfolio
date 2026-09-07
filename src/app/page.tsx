@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-grid-pattern">
+    <main className="relative min-h-screen overflow-x-hidden bg-grid-pattern" suppressHydrationWarning>
       {/* Dynamic Interactive Particle Constellation */}
       <ParticleBackground />
 

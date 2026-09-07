@@ -27,7 +27,7 @@ interface SkillItem {
   category: "Languages & Mobile" | "Frontend Engineering" | "Backend & Databases" | "Cloud & DevOps";
   level: "Expert" | "Advanced" | "Intermediate" | "Basic" | string;
   subtitle: string;
-  icon: React.ElementType;
+  icon: React.ComponentType<{ className?: string }>;
   accent: "blue" | "sky" | "emerald" | "purple" | "amber" | "indigo" | "rose" | "teal" | "orange";
   badge: string;
 }
