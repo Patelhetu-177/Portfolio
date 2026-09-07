@@ -113,7 +113,7 @@ export default function Navbar() {
             <button
               onClick={toggleTheme}
               aria-label="Toggle theme"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200/80 bg-white/90 text-slate-700 transition-colors hover:border-sky-500 hover:text-sky-500 dark:border-slate-800 dark:bg-slate-900/90 dark:text-slate-300 dark:hover:border-sky-400 dark:hover:text-sky-400"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 dark:bg-white/[0.06] text-slate-700 transition-colors hover:bg-slate-200 dark:bg-white/[0.06] dark:text-slate-300 dark:hover:bg-white/[0.1]"
             >
               {theme === "dark" ? (
                 <Sun className="h-4 w-4 text-amber-400" />
@@ -136,7 +136,7 @@ export default function Navbar() {
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setMobileMenuOpen((v) => !v)}
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-colors hover:bg-sky-500/10 dark:bg-slate-800 dark:text-slate-300 md:hidden"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-colors hover:bg-sky-500/10 dark:bg-white/[0.06] dark:text-slate-300 md:hidden"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}

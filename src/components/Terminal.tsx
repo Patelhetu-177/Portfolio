@@ -262,9 +262,9 @@ export default function TerminalSection() {
         </div>
 
         {/* Terminal Window Container */}
-        <div className="rounded-3xl border border-slate-200/90 dark:border-slate-800/90 bg-white dark:bg-[#090d16] text-slate-800 dark:text-slate-200 overflow-hidden font-mono text-xs sm:text-sm transition-colors duration-300">
+        <div className="rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200/40 dark:border-white/[0.04] text-slate-800 dark:text-slate-200 overflow-hidden font-mono text-xs sm:text-sm transition-colors duration-300">
           {/* Top Title Bar */}
-          <div className="bg-slate-100/90 dark:bg-[#0f172a] px-4 py-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+          <div className="bg-slate-200/40 dark:bg-white/[0.02] px-4 py-3 border-b border-slate-200/40 dark:border-white/[0.04] flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-red-400 hover:opacity-80 cursor-pointer" onClick={() => setLogs([])} title="Clear Terminal" />
               <span className="w-3 h-3 rounded-full bg-amber-400 hover:opacity-80 cursor-pointer" />
@@ -276,7 +276,7 @@ export default function TerminalSection() {
             <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
               <button
                 onClick={() => setLogs([])}
-                className="hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition-colors px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700"
+                className="hover:text-slate-900 dark:hover:text-white flex items-center gap-1 transition-colors px-2.5 py-1 rounded-lg bg-white/80 dark:bg-white/[0.06]"
               >
                 <RefreshCw className="w-3 h-3" />
                 <span>Reset</span>
@@ -285,7 +285,7 @@ export default function TerminalSection() {
           </div>
 
           {/* Quick Command Suggestions Pill Bar */}
-          <div className="px-4 py-2.5 bg-slate-50 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800/80 flex items-center gap-2 overflow-x-auto scrollbar-none">
+          <div className="px-4 py-2.5 bg-slate-100/30 dark:bg-white/[0.01] border-b border-slate-200/40 dark:border-white/[0.04] flex items-center gap-2 overflow-x-auto scrollbar-none">
             <span className="text-[11px] text-slate-500 dark:text-slate-400 font-sans font-semibold shrink-0">
               Quick commands:
             </span>
@@ -293,7 +293,7 @@ export default function TerminalSection() {
               <button
                 key={cmd}
                 onClick={() => executeCommand(cmd)}
-                className="px-2.5 py-1 rounded-lg bg-white hover:bg-sky-50 hover:border-sky-300 hover:text-sky-700 dark:bg-slate-800 dark:hover:bg-sky-500/20 dark:hover:border-sky-500/50 dark:hover:text-sky-300 border border-slate-200/90 dark:border-slate-700 text-[11px] text-slate-700 dark:text-slate-300 font-mono transition-colors shrink-0"
+                className="px-2.5 py-1 rounded-lg bg-white/80 hover:bg-white dark:bg-white/[0.06] dark:hover:bg-white/[0.1] text-[11px] text-slate-700 dark:text-slate-300 font-mono transition-colors shrink-0"
               >
                 {cmd}
               </button>
@@ -301,7 +301,7 @@ export default function TerminalSection() {
           </div>
 
           {/* Terminal Screen & Outputs */}
-          <div ref={contentRef} className="p-4 sm:p-5 max-h-[380px] min-h-[220px] overflow-y-auto space-y-3.5 bg-[#fafbfc] dark:bg-[#090d16] transition-colors duration-300">
+          <div ref={contentRef} className="p-4 sm:p-5 max-h-[380px] min-h-[220px] overflow-y-auto space-y-3.5 bg-transparent transition-colors duration-300">
             {logs.map((log, idx) => (
               <div key={idx} className="space-y-1.5">
                 {log.command && (
@@ -316,7 +316,7 @@ export default function TerminalSection() {
           </div>
 
           {/* User Input Prompt Footer */}
-          <div className="px-4 py-3 bg-slate-100/90 dark:bg-[#060a12] border-t border-slate-200 dark:border-slate-800 flex items-center gap-2">
+          <div className="px-4 py-3 bg-slate-200/30 dark:bg-white/[0.02] border-t border-slate-200/40 dark:border-white/[0.04] flex items-center gap-2">
             <span className="text-emerald-600 dark:text-emerald-400 font-bold shrink-0">hetu@dev:~$</span>
             <input
               ref={inputRef}

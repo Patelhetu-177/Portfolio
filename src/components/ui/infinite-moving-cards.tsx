@@ -73,7 +73,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="relative w-[320px] sm:w-[350px] min-h-[125px] flex flex-col justify-between flex-shrink-0 rounded-2xl border border-slate-200/70 bg-white/90 p-4 transition-colors duration-200 hover:border-sky-500/60 dark:border-white/[0.06] dark:bg-[#0f172a]/80 dark:hover:border-sky-500/50"
+            className="relative w-[320px] sm:w-[350px] min-h-[125px] flex flex-col justify-between flex-shrink-0 rounded-2xl bg-slate-100/70 dark:bg-white/[0.04] p-4 transition-colors duration-200"
             key={`${item.name}-${idx}`}
           >
             <div className="flex items-center justify-between gap-2 mb-2">
@@ -91,14 +91,14 @@ export const InfiniteMovingCards = ({
                 </div>
               </div>
               {item.badge && (
-                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-slate-100 dark:bg-[#0c1624] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shrink-0">
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-white/80 dark:bg-white/[0.06] text-slate-700 dark:text-slate-300 shrink-0">
                   {item.badge}
                 </span>
               )}
             </div>
 
             <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300 font-normal">
-              {item.quote}
+              &quot;{item.quote}&quot;
             </p>
           </li>
         ))}

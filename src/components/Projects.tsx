@@ -12,6 +12,7 @@ import { Github } from "@/components/Icons";
 import ProjectModal from "./ProjectModal";
 import ProjectImage from "@/components/ui/ProjectImage";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
+import { ProjectImageStack } from "@/components/ui/card-stack";
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -46,7 +47,7 @@ export default function Projects() {
               className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 ${
                 activeCategory === cat
                   ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900"
-                  : "bg-white dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:border-sky-500/50"
+                  : "bg-slate-100 dark:bg-white/[0.05] text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/[0.1]"
               }`}
             >
               {cat}
@@ -56,33 +57,40 @@ export default function Projects() {
 
         {/* 3D Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 sm:gap-10">
-          {filteredProjects.map((project) => (
-            <CardContainer key={project.id} className="w-full h-full" containerClassName="w-full py-2">
-              <CardBody className="group/card relative rounded-3xl bg-white dark:bg-[#132337]/80 border border-slate-200/90 dark:border-slate-800/80 backdrop-blur-md p-6 sm:p-7 flex flex-col justify-between hover:shadow-2xl hover:shadow-sky-500/[0.1] hover:border-sky-500/60 transition-all duration-300 w-full h-full min-h-[480px]">
-                
-                {/* 3D Project Image */}
-                <CardItem translateZ="100" className="w-full relative aspect-video rounded-2xl overflow-hidden bg-slate-950 shadow-md">
-                  <ProjectImage
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover/card:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-black/20 to-transparent opacity-60 group-hover/card:opacity-40 transition-opacity" />
+          {filteredProjects.map((project) => {
+            const projectImages =
+              project.gallery && project.gallery.length > 0
+                ? project.gallery
+                : [{ image: project.image, title: project.title }];
 
-                  {/* Category Pill */}
-                  <span className="absolute top-3.5 left-3.5 text-[11px] font-bold px-3 py-1 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/15">
-                    {project.category}
-                  </span>
+            return (
+              <CardContainer key={project.id} className="w-full h-full" containerClassName="w-full py-2">
+                <CardBody className="group/card relative rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200/40 dark:border-white/[0.04] p-6 sm:p-7 flex flex-col justify-between transition-colors duration-200 w-full h-full min-h-[480px]">
+                  
+                  {/* 3D Project Image Card Stack */}
+                  <CardItem translateZ="100" className="w-full relative aspect-video mt-2">
+                    <ProjectImageStack
+                      images={projectImages}
+                      onImageClick={() => setSelectedProject(project)}
+                    />
 
-                  {/* Quick Expand Button */}
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    className="absolute top-3.5 right-3.5 p-2 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/15 opacity-0 group-hover/card:opacity-100 hover:bg-sky-600 transition-all duration-200"
-                    title="Quick Details"
-                  >
-                    <Maximize2 className="w-3.5 h-3.5" />
-                  </button>
-                </CardItem>
+                    {/* Category Pill */}
+                    <span className="absolute top-3.5 left-3.5 z-20 text-[11px] font-bold px-3 py-1 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/15 pointer-events-none">
+                      {project.category}
+                    </span>
+
+                    {/* Quick Expand Button */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedProject(project);
+                      }}
+                      className="absolute top-3.5 right-3.5 z-20 p-2 rounded-full bg-black/60 text-white backdrop-blur-md border border-white/15 opacity-0 group-hover/card:opacity-100 hover:bg-sky-600 transition-all duration-200"
+                      title="Quick Details"
+                    >
+                      <Maximize2 className="w-3.5 h-3.5" />
+                    </button>
+                  </CardItem>
 
                 {/* 3D Project Title & Tagline */}
                 <div className="mt-5 flex-1 flex flex-col justify-between">
@@ -117,7 +125,7 @@ export default function Projects() {
                     {project.tags.slice(0, 5).map((tag) => (
                       <span
                         key={tag}
-                        className="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-[#0c1624] text-slate-700 dark:text-slate-300 border border-slate-200/90 dark:border-slate-700/80"
+                        className="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-white/80 dark:bg-white/[0.06] text-slate-700 dark:text-slate-300"
                       >
                         {tag}
                       </span>
@@ -128,7 +136,7 @@ export default function Projects() {
                 {/* 3D Bottom Actions */}
                 <CardItem
                   translateZ="40"
-                  className="pt-4 flex items-center justify-between gap-3 border-t border-slate-100 dark:border-slate-800/80 w-full"
+                  className="pt-4 flex items-center justify-between gap-3 border-t border-slate-200/40 dark:border-white/[0.04] w-full"
                 >
                   <a
                     href={project.githubUrl}
@@ -143,7 +151,7 @@ export default function Projects() {
                   <div className="flex items-center gap-2.5">
                     <button
                       onClick={() => setSelectedProject(project)}
-                      className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-[#1a2638] hover:bg-slate-200 dark:hover:bg-[#22334a] text-slate-800 dark:text-slate-200 text-xs font-semibold transition-all border border-slate-200 dark:border-slate-700"
+                      className="px-3.5 py-1.5 rounded-xl bg-slate-200/70 hover:bg-slate-300 dark:bg-white/[0.08] dark:hover:bg-white/[0.12] text-slate-800 dark:text-slate-200 text-xs font-semibold transition-all"
                     >
                       Details
                     </button>
@@ -152,7 +160,7 @@ export default function Projects() {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-sm"
+                      className="flex items-center gap-1.5 px-4 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white text-xs font-bold transition-all"
                     >
                       <span>Live Demo</span>
                       <ExternalLink className="w-3.5 h-3.5" />
@@ -162,7 +170,8 @@ export default function Projects() {
 
               </CardBody>
             </CardContainer>
-          ))}
+            );
+          })}
         </div>
       </div>
 

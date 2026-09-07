@@ -19,17 +19,17 @@ export default function Experience() {
         </div>
 
         {/* Timeline Container */}
-        <div className="relative border-l-2 border-slate-200 dark:border-slate-800 ml-4 sm:ml-8 space-y-12">
+        <div className="relative border-l border-slate-200/60 dark:border-white/[0.08] ml-4 sm:ml-8 space-y-12">
           {EXPERIENCES.map((exp, idx) => (
             <div key={idx} className="relative pl-6 sm:pl-10 group">
               {/* Timeline Node Icon */}
-              <div className="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-white dark:bg-slate-900 border-2 border-sky-500 flex items-center justify-center text-sky-500 transition-colors">
+              <div className="absolute -left-[16px] top-1.5 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-sky-500 flex items-center justify-center transition-colors">
                 <Briefcase className="w-3.5 h-3.5" />
               </div>
 
               {/* Experience Card */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900/60 border border-slate-200/90 dark:border-slate-800/80 backdrop-blur-md hover:border-sky-500/40 transition-colors duration-200">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-200/60 dark:border-slate-800/60">
+              <div className="p-6 sm:p-8 rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200/40 dark:border-white/[0.04] transition-colors duration-200">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-200/40 dark:border-white/[0.04]">
                   <div>
                     <span className="inline-block px-3 py-1 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 text-xs font-bold mb-2">
                       {exp.type}
@@ -59,7 +59,7 @@ export default function Experience() {
                   {exp.projects.map((proj, pIdx) => (
                     <div
                       key={pIdx}
-                      className="p-5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60"
+                      className="p-5 rounded-2xl bg-white/70 dark:bg-white/[0.04]"
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
                         <h5 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white flex items-center gap-2">
@@ -81,11 +81,11 @@ export default function Experience() {
                       </ul>
 
                       {/* Tech stack badges */}
-                      <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-200/60 dark:border-slate-700/60">
+                      <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-200/40 dark:border-white/[0.04]">
                         {proj.stack.map((st, stIdx) => (
                           <span
                             key={stIdx}
-                            className="px-2 py-0.5 rounded-md bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-600/60 text-[10px] font-semibold"
+                            className="px-2 py-0.5 rounded-md bg-white dark:bg-white/[0.08] text-slate-700 dark:text-slate-200 text-[10px] font-semibold"
                           >
                             {st}
                           </span>

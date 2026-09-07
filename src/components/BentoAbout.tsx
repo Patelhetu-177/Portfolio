@@ -47,7 +47,7 @@ export default function BentoAbout() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {/* PDEU Card */}
-            <div className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex flex-col justify-between">
+            <div className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] flex flex-col justify-between">
               <div className="flex items-start justify-between gap-1">
                 <div>
                   <div className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
@@ -69,7 +69,7 @@ export default function BentoAbout() {
             </div>
 
             {/* Uma Higher Secondary Card */}
-            <div className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex flex-col justify-between">
+            <div className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] flex flex-col justify-between">
               <div className="flex items-start justify-between gap-1">
                 <div>
                   <div className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
@@ -118,7 +118,7 @@ export default function BentoAbout() {
               href={PERSONAL_INFO.socials.leetcode}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.04] hover:bg-amber-500/10 transition-colors block group/link"
+              className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] hover:bg-amber-500/10 transition-colors block group/link"
               title="View Hetu's LeetCode Profile"
             >
               <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-0.5">
@@ -133,7 +133,7 @@ export default function BentoAbout() {
               href={PERSONAL_INFO.socials.codechef}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.04] hover:bg-sky-500/10 transition-colors block group/link"
+              className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] hover:bg-sky-500/10 transition-colors block group/link"
               title="View Hetu's CodeChef Profile"
             >
               <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-0.5">
@@ -175,15 +175,15 @@ export default function BentoAbout() {
           </div>
 
           <div className="space-y-1.5 text-[10px]">
-            <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex items-center justify-between">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between">
               <span className="font-bold text-slate-800 dark:text-slate-200">FirstBookIt</span>
               <span className="text-[9px] text-indigo-600 dark:text-indigo-400 font-semibold">React Native + Expo</span>
             </div>
-            <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex items-center justify-between">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between">
               <span className="font-bold text-slate-800 dark:text-slate-200">AvatarAI</span>
               <span className="text-[9px] text-purple-600 dark:text-purple-400 font-semibold">Next.js 14 + Gemini AI</span>
             </div>
-            <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex items-center justify-between">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between">
               <span className="font-bold text-slate-800 dark:text-slate-200">EventSphere</span>
               <span className="text-[9px] text-sky-600 dark:text-sky-400 font-semibold">Next.js + Prisma</span>
             </div>
@@ -214,7 +214,7 @@ export default function BentoAbout() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[10px]">
           
 
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.04]">
+            <div className="p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04]">
               <div className="font-bold text-slate-900 dark:text-white flex justify-between">
                 <span>Ethicare</span>
                 <span className="text-indigo-600 dark:text-indigo-400 font-mono font-bold">FinTech</span>
@@ -224,7 +224,7 @@ export default function BentoAbout() {
               </p>
             </div>
 
-            <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-white/[0.04]">
+            <div className="p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04]">
               <div className="font-bold text-slate-900 dark:text-white flex justify-between">
                 <span>KARBYNX</span>
                 <span className="text-sky-600 dark:text-sky-400 font-mono font-bold">Carbon MRV</span>
@@ -263,7 +263,7 @@ export default function BentoAbout() {
           </div>
 
           <div className="space-y-1.5">
-            <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
               <div>
                 <span className="font-bold text-slate-800 dark:text-slate-200 block">Next.js App Router, SSR/SSG</span>
                 <span className="text-slate-500 dark:text-slate-400 text-[9px]">REST APIs · JWT auth · middleware</span>
@@ -273,7 +273,7 @@ export default function BentoAbout() {
               </span>
             </div>
 
-            <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
               <div>
                 <span className="font-bold text-slate-800 dark:text-slate-200 block">React Native + Expo apps</span>
                 <span className="text-slate-500 dark:text-slate-400 text-[9px]">iOS &amp; Android · GPS · maps</span>
@@ -283,7 +283,7 @@ export default function BentoAbout() {
               </span>
             </div>
 
-            <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
               <div>
                 <span className="font-bold text-slate-800 dark:text-slate-200 block">MongoDB, PostgreSQL, Prisma</span>
                 <span className="text-slate-500 dark:text-slate-400 text-[9px]">Schema design · multi-role RBAC</span>
@@ -317,7 +317,7 @@ export default function BentoAbout() {
           </div>
 
           <div className="space-y-1.5">
-            <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
               <div className="flex items-center gap-1.5 min-w-0">
                 <GeminiIcon className="w-3.5 h-3.5 text-purple-500 shrink-0" />
                 <div className="min-w-0">
@@ -330,7 +330,7 @@ export default function BentoAbout() {
               </span>
             </div>
 
-            <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
               <div className="flex items-center gap-1.5 min-w-0">
                 <PineconeIcon className="w-3.5 h-3.5 text-sky-500 shrink-0" />
                 <div className="min-w-0">
@@ -343,7 +343,7 @@ export default function BentoAbout() {
               </span>
             </div>
 
-            <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
               <div className="flex items-center gap-1.5 min-w-0">
                 <AwsIcon className="w-3.5 h-3.5 text-amber-500 shrink-0" />
                 <div className="min-w-0">
@@ -380,7 +380,7 @@ export default function BentoAbout() {
           </div>
 
           <div className="space-y-1.5">
-            <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
               <div>
                 <span className="font-bold text-slate-800 dark:text-slate-200 block">HTML, CSS &amp; JavaScript for Web Developers</span>
                 <span className="text-slate-500 dark:text-slate-400 text-[9px]">Johns Hopkins University</span>
@@ -390,7 +390,7 @@ export default function BentoAbout() {
               </span>
             </div>
 
-            <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
               <div>
                 <span className="font-bold text-slate-800 dark:text-slate-200 block">Web Apps with Express.js &amp; Node.js</span>
                 <span className="text-slate-500 dark:text-slate-400 text-[9px]">Meta (Coursera)</span>
@@ -400,7 +400,7 @@ export default function BentoAbout() {
               </span>
             </div>
 
-            <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
               <div>
                 <span className="font-bold text-slate-800 dark:text-slate-200 block">Smart India Hackathon 2024</span>
                 <span className="text-slate-500 dark:text-slate-400 text-[9px]">Cyber Triage Tool · college round</span>

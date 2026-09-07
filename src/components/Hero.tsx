@@ -20,9 +20,9 @@ import { InfiniteMovingCards, MovingCardItem } from "@/components/ui/infinite-mo
 const FLIP_MESSAGES = [
   "FULL-STACK DEVELOPER\n MERN STACK",
   "MOBILE APP ENGINEER\nREACT NATIVE & EXPO",
-  "GENAI & AUTOMATIONS\n N8N WORKFLOWS",
+  "GENAI & AUTOMATIONS\n N8N FLOWS",
   "LEETCODE 1572 RATING\n450+ PROBLEMS SOLVED",
-  "CODECHEF 3-STAR CODER\n1653 CONTEST RATING",
+  "CODECHEF 3★ CODER\n1653 CONTEST RATING",
 ];
 
 const HERO_CARDS = [
@@ -151,7 +151,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 w-full sm:w-auto pt-2">
               <a
                 href="#projects"
-                className="inline-flex h-12 sm:h-14 items-center justify-center rounded-full bg-slate-900 px-7 text-[15px] font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-100 shadow-md"
+                className="inline-flex h-12 sm:h-14 items-center justify-center rounded-full bg-slate-900 px-7 text-[15px] font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-100"
               >
                 View Projects <span className="ml-2 font-normal">→</span>
               </a>
@@ -160,14 +160,14 @@ export default function Hero() {
                 href={PERSONAL_INFO.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 sm:h-14 items-center justify-center rounded-full bg-slate-100 dark:bg-[#222222] px-6 text-[15px] font-medium text-slate-800 dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-[#2a2a2a] border border-slate-200/80 dark:border-slate-800"
+                className="inline-flex h-12 sm:h-14 items-center justify-center rounded-full bg-slate-100 dark:bg-white/[0.06] px-6 text-[15px] font-medium text-slate-800 dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-white/[0.1]"
               >
                 Resume PDF
               </a>
 
               <a
                 href="#contact"
-                className="inline-flex h-12 sm:h-14 items-center justify-center rounded-full bg-slate-100 dark:bg-[#222222] px-6 text-[15px] font-medium text-slate-800 dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-[#2a2a2a] border border-slate-200/80 dark:border-slate-800"
+                className="inline-flex h-12 sm:h-14 items-center justify-center rounded-full bg-slate-100 dark:bg-white/[0.06] px-6 text-[15px] font-medium text-slate-800 dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-white/[0.1]"
               >
                 Get In Touch
               </a>
@@ -180,7 +180,7 @@ export default function Hero() {
               <DraggableCardContainer className="relative h-full w-full">
                 {HERO_CARDS.map((item) => (
                   <DraggableCardBody key={item.title} className={item.className}>
-                    <div className="overflow-hidden rounded-2xl bg-white p-2.5 shadow-2xl ring-1 ring-black/5 dark:bg-slate-800 dark:ring-white/10">
+                    <div className="overflow-hidden rounded-2xl bg-white/90 p-2.5 dark:bg-slate-900/90 border border-slate-200/50 dark:border-white/[0.06]">
                       <img
                         src={item.image}
                         alt={item.title}
@@ -198,7 +198,7 @@ export default function Hero() {
         </div>
 
         {/* ROW 2: Details Section at Bottom (Bio, Socials & Slow Moving Single-Line Highlights) */}
-        <div className="p-6 sm:p-7 rounded-3xl bg-white/80 dark:bg-[#132337]/60 border border-slate-200/80 dark:border-slate-800/80 backdrop-blur-md shadow-sm space-y-6">
+        <div className="p-6 sm:p-7 rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200/40 dark:border-white/[0.04] backdrop-blur-md space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             {/* Detailed Bio */}
             <div className="lg:col-span-8 space-y-2">
@@ -220,7 +220,7 @@ export default function Hero() {
                   href={PERSONAL_INFO.socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#1a2638] border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:text-blue-500 text-xs font-medium transition-colors shadow-sm"
+                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-slate-200 hover:text-blue-500 text-xs font-medium transition-colors"
                 >
                   <Github className="w-3.5 h-3.5" />
                   <span>GitHub</span>
@@ -229,7 +229,7 @@ export default function Hero() {
                   href={PERSONAL_INFO.socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#1a2638] border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:text-[#0077b5] text-xs font-medium transition-colors shadow-sm"
+                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-slate-200 hover:text-[#0077b5] text-xs font-medium transition-colors"
                 >
                   <Linkedin className="w-3.5 h-3.5" />
                   <span>LinkedIn</span>
@@ -238,7 +238,7 @@ export default function Hero() {
                   href={PERSONAL_INFO.socials.leetcode}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#1a2638] border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:text-amber-500 text-xs font-medium transition-colors shadow-sm"
+                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-slate-200 hover:text-amber-500 text-xs font-medium transition-colors"
                 >
                   <Flame className="w-3.5 h-3.5 text-amber-500" />
                   <span>LeetCode (1572)</span>
@@ -247,7 +247,7 @@ export default function Hero() {
                   href={PERSONAL_INFO.socials.codechef}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#1a2638] border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 hover:text-amber-600 text-xs font-medium transition-colors shadow-sm"
+                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-slate-200 hover:text-amber-600 text-xs font-medium transition-colors"
                 >
                   <Code2 className="w-3.5 h-3.5 text-amber-600" />
                   <span>CodeChef (3★)</span>

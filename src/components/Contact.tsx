@@ -122,7 +122,7 @@ export default function Contact() {
           {/* ── Left Column: Clean Contact Overview & 3D Globe ───────────── */}
           <div className="lg:col-span-6 space-y-5">
             {/* Top Mail Icon Badge */}
-            <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-sky-500">
+            <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-white/[0.06] text-sky-500">
               <Mail className="w-4 h-4" />
             </div>
 
@@ -163,33 +163,30 @@ export default function Contact() {
                 href={PERSONAL_INFO.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/btn relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-gray-50 dark:bg-zinc-900 text-xs font-medium text-slate-800 dark:text-slate-200 hover:text-sky-500 transition-colors overflow-hidden"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/[0.06] text-xs font-medium text-slate-800 dark:text-slate-200 hover:text-sky-500 transition-colors"
               >
                 <FileDown className="w-3.5 h-3.5 text-sky-500" />
                 <span>Resume PDF</span>
-                <BottomGradient />
               </a>
 
               <a
                 href={PERSONAL_INFO.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/btn relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-gray-50 dark:bg-zinc-900 text-xs font-medium text-slate-800 dark:text-slate-200 hover:text-sky-500 transition-colors overflow-hidden"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/[0.06] text-xs font-medium text-slate-800 dark:text-slate-200 hover:text-sky-500 transition-colors"
               >
                 <Github className="w-3.5 h-3.5" />
                 <span>GitHub</span>
-                <BottomGradient />
               </a>
 
               <a
                 href={PERSONAL_INFO.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/btn relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-gray-50 dark:bg-zinc-900 text-xs font-medium text-slate-800 dark:text-slate-200 hover:text-[#0077b5] transition-colors overflow-hidden"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/[0.06] text-xs font-medium text-slate-800 dark:text-slate-200 hover:text-[#0077b5] transition-colors"
               >
                 <Linkedin className="w-3.5 h-3.5 text-[#0077b5]" />
                 <span>LinkedIn</span>
-                <BottomGradient />
               </a>
             </div>
 
@@ -209,13 +206,13 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* ── Right Column: Aceternity Clean Form ──────────────────────── */}
+          {/* ── Right Column: Clean Form ──────────────────────── */}
           <div className="lg:col-span-6">
-            <div className="w-full rounded-2xl bg-white p-5 sm:p-8 dark:bg-black border border-neutral-200 dark:border-neutral-800">
-              <h3 className="text-lg sm:text-xl font-bold text-neutral-800 dark:text-neutral-200">
+            <div className="w-full rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] p-5 sm:p-8 border border-slate-200/40 dark:border-white/[0.04]">
+              <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
                 Send a Message
               </h3>
-              <p className="mt-1 text-xs sm:text-sm text-neutral-600 dark:text-neutral-400">
+              <p className="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                 Fill out the form below and I&apos;ll get back to you promptly.
               </p>
 
@@ -290,22 +287,21 @@ export default function Contact() {
                 </LabelInputContainer>
 
                 <button
-                  className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset] transition-colors disabled:opacity-50 text-sm"
+                  className="h-11 w-full rounded-full bg-slate-900 text-white dark:bg-white dark:text-black font-semibold transition-colors hover:bg-slate-800 dark:hover:bg-slate-100 disabled:opacity-50 text-sm"
                   type="submit"
                   disabled={status === "submitting"}
                 >
                   {status === "submitting" ? (
                     <span>Sending message...</span>
                   ) : status === "success" ? (
-                    <span className="flex items-center justify-center gap-1.5 text-emerald-400">
+                    <span className="flex items-center justify-center gap-1.5 text-emerald-600 dark:text-emerald-400">
                       <Check className="w-4 h-4" /> Message Sent!
                     </span>
                   ) : status === "error" ? (
-                    <span className="text-rose-400">Try Again</span>
+                    <span className="text-rose-500 dark:text-rose-400">Try Again</span>
                   ) : (
                     <span>Send Message &rarr;</span>
                   )}
-                  <BottomGradient />
                 </button>
 
                 {status === "error" && errorMessage && (

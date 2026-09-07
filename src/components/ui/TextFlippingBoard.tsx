@@ -5,16 +5,16 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 // ── Configuration ──────────────────────────────────────────────────────
-const BOARD_ROWS = 6;
-const BOARD_COLS = 22;
+const BOARD_ROWS = 4;
+const BOARD_COLS = 20;
 
 const FLAP_CHARS =
   " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{};:'\",.<>/?•★→←⚡🔥💻🚀🎯✨";
 
-const BASE_STEP_MS = 32;
-const BASE_FLIP_S = 0.2;
-const BASE_COL_DELAY = 16;
-const BASE_ROW_DELAY = 20;
+const BASE_STEP_MS = 30;
+const BASE_FLIP_S = 0.18;
+const BASE_COL_DELAY = 14;
+const BASE_ROW_DELAY = 18;
 
 type AccentColor = {
   top: string;
@@ -30,13 +30,6 @@ const ACCENT_COLORS: AccentColor[] = [
   { top: "bg-amber-500", bottom: "bg-amber-600", text: "text-neutral-900" },
   { top: "bg-rose-600", bottom: "bg-rose-700", text: "text-white" },
 ];
-
-const CELL_TEXT_STYLE: React.CSSProperties = {
-  fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
-  fontWeight: 800,
-  fontSize: "clamp(8px, 1.4vw, 16px)",
-  lineHeight: 1,
-};
 
 // ── Single Split-Flap Cell ─────────────────────────────────────────────
 
@@ -86,10 +79,8 @@ const FlapCell = memo(function FlapCell({
     startTimer.current = null;
     stepTimer.current = null;
 
-    // If both current and target are spaces, no animation needed
     if (normalized === " " && curRef.current === " ") return;
 
-    // Fast 4-6 step flutter for changing letters, 2 steps for clearing to space
     const scrambleCount = normalized === " " ? 2 : 4 + Math.floor(Math.random() * 3);
 
     const runStep = (i: number) => {
@@ -127,41 +118,33 @@ const FlapCell = memo(function FlapCell({
     };
   }, [normalized, delay, stepMs]);
 
-  const show = current === " " ? "\u00A0" : current;
+  const isSpace = current === " ";
+  const show = isSpace ? "\u00A0" : current;
   const showPrev = prev === " " ? "\u00A0" : prev;
 
   const textCx =
-    "absolute inset-x-0 flex select-none items-center justify-center font-mono font-bold tracking-wider uppercase";
+    "absolute inset-x-0 flex select-none items-center justify-center font-mono font-black tracking-wider uppercase text-[11px] sm:text-xs md:text-sm lg:text-base";
 
-  const topBg = accent?.top ?? "bg-neutral-200/90 dark:bg-[#121624]";
-  const bottomBg = accent?.bottom ?? "bg-neutral-200/90 dark:bg-[#121624]";
-  const textColor = accent?.text ?? "text-neutral-900 dark:text-white";
+  const topBg = accent?.top ?? (isSpace ? "bg-slate-200/50 dark:bg-[#0e1320]" : "bg-slate-200 dark:bg-[#151c2e]");
+  const bottomBg = accent?.bottom ?? (isSpace ? "bg-slate-200/50 dark:bg-[#0e1320]" : "bg-slate-200 dark:bg-[#151c2e]");
+  const textColor = accent?.text ?? "text-slate-900 dark:text-white";
 
-  const flapTopBg = prevAccent?.top ?? "bg-neutral-300 dark:bg-[#1a2034]";
-  const flapTextColor = prevAccent?.text ?? "text-neutral-900 dark:text-white";
+  const flapTopBg = prevAccent?.top ?? "bg-slate-300 dark:bg-[#1e263d]";
+  const flapTextColor = prevAccent?.text ?? "text-slate-900 dark:text-white";
 
   const bottomDelay = flipDuration * 0.45;
 
   return (
-    <div className="flex aspect-[1/1.65] flex-col overflow-hidden rounded-[2px] border border-neutral-300/80 md:rounded-[3px] md:border dark:border-white/[0.08] bg-neutral-100 dark:bg-[#090c16] shadow-sm">
+    <div className="flex aspect-[1/1.55] flex-col overflow-hidden rounded-[2px] sm:rounded-[3px] border border-slate-300/40 dark:border-white/[0.06] bg-slate-100 dark:bg-[#0a0e18]">
       <div className="relative flex-1 [perspective:800px] [transform-style:preserve-3d]">
-        {/* Left & Right Notch Decorators */}
-        <div className="absolute inset-0 z-40 hidden flex-row items-center justify-between md:flex pointer-events-none px-[0.5px]">
-          <div className="h-1.5 w-[2px] rounded-r-full bg-neutral-400 dark:bg-black" />
-          <div className="h-1.5 w-[2px] rounded-l-full bg-neutral-400 dark:bg-black" />
-        </div>
-
         {/* Static top */}
         <div
           className={cn(
-            "absolute inset-x-0 top-0 h-[calc(50%-0.5px)] overflow-hidden rounded-t-[2px] md:rounded-t-[3px]",
+            "absolute inset-x-0 top-0 h-[calc(50%-0.5px)] overflow-hidden rounded-t-[2px] sm:rounded-t-[3px]",
             topBg
           )}
         >
-          <div
-            className={cn(textCx, textColor, "top-0 h-[200%]")}
-            style={CELL_TEXT_STYLE}
-          >
+          <div className={cn(textCx, textColor, "top-0 h-[200%]")}>
             {show}
           </div>
         </div>
@@ -169,14 +152,11 @@ const FlapCell = memo(function FlapCell({
         {/* Static bottom */}
         <div
           className={cn(
-            "absolute inset-x-0 bottom-0 h-[calc(50%-0.5px)] overflow-hidden rounded-b-[2px] md:rounded-b-[3px]",
+            "absolute inset-x-0 bottom-0 h-[calc(50%-0.5px)] overflow-hidden rounded-b-[2px] sm:rounded-b-[3px]",
             bottomBg
           )}
         >
-          <div
-            className={cn(textCx, textColor, "bottom-0 h-[200%]")}
-            style={CELL_TEXT_STYLE}
-          >
+          <div className={cn(textCx, textColor, "bottom-0 h-[200%]")}>
             {show}
           </div>
         </div>
@@ -186,7 +166,7 @@ const FlapCell = memo(function FlapCell({
           <motion.div
             key={`t${flipId}`}
             className={cn(
-              "absolute inset-x-0 top-0 z-20 h-[calc(50%-0.5px)] origin-bottom overflow-hidden rounded-t-[2px] md:rounded-t-[3px] [backface-visibility:hidden] [transform-style:preserve-3d]",
+              "absolute inset-x-0 top-0 z-20 h-[calc(50%-0.5px)] origin-bottom overflow-hidden rounded-t-[2px] sm:rounded-t-[3px] [backface-visibility:hidden] [transform-style:preserve-3d]",
               flapTopBg
             )}
             initial={{ rotateX: 0 }}
@@ -196,10 +176,7 @@ const FlapCell = memo(function FlapCell({
               ease: [0.55, 0.055, 0.675, 0.19],
             }}
           >
-            <div
-              className={cn(textCx, flapTextColor, "top-0 h-[200%]")}
-              style={CELL_TEXT_STYLE}
-            >
+            <div className={cn(textCx, flapTextColor, "top-0 h-[200%]")}>
               {showPrev}
             </div>
           </motion.div>
@@ -210,7 +187,7 @@ const FlapCell = memo(function FlapCell({
           <motion.div
             key={`b${flipId}`}
             className={cn(
-              "absolute inset-x-0 bottom-0 z-10 h-[calc(50%-0.5px)] origin-top overflow-hidden rounded-b-[2px] md:rounded-b-[3px] [backface-visibility:hidden] [transform-style:preserve-3d]",
+              "absolute inset-x-0 bottom-0 z-10 h-[calc(50%-0.5px)] origin-top overflow-hidden rounded-b-[2px] sm:rounded-b-[3px] [backface-visibility:hidden] [transform-style:preserve-3d]",
               bottomBg
             )}
             initial={{ rotateX: 90 }}
@@ -221,17 +198,16 @@ const FlapCell = memo(function FlapCell({
               ease: [0.33, 1.5, 0.64, 1],
             }}
           >
-            <div
-              className={cn(textCx, textColor, "bottom-0 h-[200%]")}
-              style={CELL_TEXT_STYLE}
-            >
+            <div className={cn(textCx, textColor, "bottom-0 h-[200%]")}>
               {show}
             </div>
           </motion.div>
         )}
 
-        {/* Center Split Seam */}
-        <div className="pointer-events-none absolute inset-x-0 top-1/2 z-30 h-px -translate-y-[0.5px] bg-neutral-400/60 dark:bg-black" />
+        {/* Subtle Center Split Seam (only visible on active characters) */}
+        {!isSpace && (
+          <div className="pointer-events-none absolute inset-x-0 top-1/2 z-30 h-px -translate-y-[0.5px] bg-slate-400/40 dark:bg-black/60" />
+        )}
       </div>
     </div>
   );
@@ -283,7 +259,7 @@ export function TextFlippingBoard({
   return (
     <div
       className={cn(
-        "relative mx-auto w-full max-w-2xl rounded-2xl bg-neutral-200/70 p-3 sm:p-4 shadow-xl backdrop-blur-xl md:rounded-3xl border border-neutral-300/80 dark:bg-[#070b14]/95 dark:border-white/[0.08] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)]",
+        "relative mx-auto w-full max-w-xl rounded-2xl bg-slate-200/50 p-2.5 sm:p-4 shadow-xl backdrop-blur-xl md:rounded-3xl border border-slate-300/60 dark:bg-[#070b14]/90 dark:border-white/[0.08] dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)]",
         className
       )}
     >

@@ -206,66 +206,57 @@ export default function Skills() {
     switch (accent) {
       case "sky":
         return {
-          iconBg: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20",
-          badgeBg: "bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/30",
-          cardBorder: "hover:border-sky-500/50",
+          iconBg: "bg-sky-500/10 text-sky-600 dark:text-sky-400",
+          badgeBg: "bg-sky-500/10 text-sky-700 dark:text-sky-300",
           dotColor: "bg-sky-500",
         };
       case "blue":
         return {
-          iconBg: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
-          badgeBg: "bg-blue-500/10 text-blue-700 dark:text-blue-300 border-blue-500/30",
-          cardBorder: "hover:border-blue-500/50",
+          iconBg: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+          badgeBg: "bg-blue-500/10 text-blue-700 dark:text-blue-300",
           dotColor: "bg-blue-500",
         };
       case "emerald":
         return {
-          iconBg: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
-          badgeBg: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30",
-          cardBorder: "hover:border-emerald-500/50",
+          iconBg: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+          badgeBg: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
           dotColor: "bg-emerald-500",
         };
       case "purple":
         return {
-          iconBg: "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
-          badgeBg: "bg-purple-500/10 text-purple-700 dark:text-purple-300 border-purple-500/30",
-          cardBorder: "hover:border-purple-500/50",
+          iconBg: "bg-purple-500/10 text-purple-600 dark:text-purple-400",
+          badgeBg: "bg-purple-500/10 text-purple-700 dark:text-purple-300",
           dotColor: "bg-purple-500",
         };
       case "amber":
         return {
-          iconBg: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
-          badgeBg: "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/30",
-          cardBorder: "hover:border-amber-500/50",
+          iconBg: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
+          badgeBg: "bg-amber-500/10 text-amber-700 dark:text-amber-300",
           dotColor: "bg-amber-500",
         };
       case "indigo":
         return {
-          iconBg: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20",
-          badgeBg: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border-indigo-500/30",
-          cardBorder: "hover:border-indigo-500/50",
+          iconBg: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
+          badgeBg: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-300",
           dotColor: "bg-indigo-500",
         };
       case "teal":
         return {
-          iconBg: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20",
-          badgeBg: "bg-teal-500/10 text-teal-700 dark:text-teal-300 border-teal-500/30",
-          cardBorder: "hover:border-teal-500/50",
+          iconBg: "bg-teal-500/10 text-teal-600 dark:text-teal-400",
+          badgeBg: "bg-teal-500/10 text-teal-700 dark:text-teal-300",
           dotColor: "bg-teal-500",
         };
       case "orange":
         return {
-          iconBg: "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20",
-          badgeBg: "bg-orange-500/10 text-orange-700 dark:text-orange-300 border-orange-500/30",
-          cardBorder: "hover:border-orange-500/50",
+          iconBg: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
+          badgeBg: "bg-orange-500/10 text-orange-700 dark:text-orange-300",
           dotColor: "bg-orange-500",
         };
       case "rose":
       default:
         return {
-          iconBg: "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20",
-          badgeBg: "bg-rose-500/10 text-rose-700 dark:text-rose-300 border-rose-500/30",
-          cardBorder: "hover:border-rose-500/50",
+          iconBg: "bg-rose-500/10 text-rose-600 dark:text-rose-400",
+          badgeBg: "bg-rose-500/10 text-rose-700 dark:text-rose-300",
           dotColor: "bg-rose-500",
         };
     }
@@ -290,10 +281,10 @@ export default function Skills() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-medium transition-colors duration-200 border ${
+              className={`px-4 py-2 rounded-full text-xs font-medium transition-colors duration-200 ${
                 activeCategory === cat
-                  ? "bg-slate-900 text-white border-slate-900 dark:bg-white dark:text-black dark:border-white"
-                  : "bg-white dark:bg-[#132337]/60 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600"
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-black"
+                  : "bg-slate-100 dark:bg-white/[0.05] text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/[0.1]"
               }`}
             >
               {cat}
@@ -310,13 +301,13 @@ export default function Skills() {
             return (
               <div
                 key={idx}
-                className={`group relative p-4 rounded-2xl bg-white dark:bg-[#132337]/70 border border-slate-200/90 dark:border-white/[0.08] backdrop-blur-md transition-colors duration-200 ${styles.cardBorder}`}
+                className="group relative p-4 rounded-2xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200/40 dark:border-white/[0.04] transition-colors duration-200"
               >
                 <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className={`p-2.5 rounded-xl border ${styles.iconBg}`}>
+                  <div className={`p-2.5 rounded-xl ${styles.iconBg}`}>
                     <Icon className="w-5 h-5" />
                   </div>
-                  <span className={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md border ${styles.badgeBg}`}>
+                  <span className={`text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md ${styles.badgeBg}`}>
                     {skill.badge}
                   </span>
                 </div>
@@ -333,7 +324,7 @@ export default function Skills() {
                   </p>
                 </div>
 
-                <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px]">
+                <div className="mt-3 pt-2.5 border-t border-slate-200/40 dark:border-white/[0.04] flex items-center justify-between text-[11px]">
                   <span className="text-slate-500 dark:text-slate-400 font-medium">Proficiency:</span>
                   <span className="font-semibold text-slate-700 dark:text-slate-300 font-mono">
                     {skill.level}
