@@ -7,6 +7,7 @@ import React, {
   createContext,
   useContext,
 } from "react";
+import { createPortal } from "react-dom";
 import {
   ArrowLeft,
   ArrowRight,
@@ -164,8 +165,13 @@ export const Card = ({
   layout?: boolean;
 }) => {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { onCardClose } = useContext(CarouselContext);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const isDesktopApp =
     card.isDesktop !== undefined
@@ -204,47 +210,47 @@ export const Card = ({
     onCardClose(index);
   };
 
+  const overlay = (
+    <AnimatePresence>
+      {open && (
+        <div className="fixed inset-0 z-[100000] h-full w-full overflow-y-auto overscroll-contain flex justify-center px-4 py-8 sm:py-12">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={handleClose}
+            className="bg-black/75 backdrop-blur-lg fixed inset-0"
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 30 }}
+            ref={containerRef}
+            className="relative z-[100001] my-auto w-full max-w-4xl h-fit bg-white dark:bg-[#0c1624] p-5 sm:p-8 md:p-10 rounded-3xl font-sans border border-slate-200 dark:border-slate-800 shadow-2xl"
+          >
+            <button
+              className="absolute top-4 right-4 ml-auto bg-black dark:bg-white text-white dark:text-black h-8 w-8 rounded-full flex items-center justify-center transition-transform hover:scale-110 z-50"
+              onClick={handleClose}
+              aria-label="Close dialog"
+            >
+              <X className="h-4 w-4" />
+            </button>
+            <motion.p className="text-xs sm:text-sm font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider pr-10">
+              {card.category}
+            </motion.p>
+            <motion.h3 className="text-2xl md:text-4xl font-bold text-slate-900 dark:text-white mt-2 mb-6">
+              {card.title}
+            </motion.h3>
+            <div className="py-2">{card.content}</div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+
   return (
     <>
-      <AnimatePresence>
-        {open && (
-          <div className="fixed inset-0 h-screen z-[100000] overflow-auto">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={handleClose}
-              className="bg-black/75 backdrop-blur-lg h-full w-full fixed inset-0"
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 30 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 30 }}
-              ref={containerRef}
-              className="max-w-4xl mx-auto bg-white dark:bg-[#0c1624] h-fit z-[100001] my-8 sm:my-12 p-6 md:p-10 rounded-3xl font-sans relative border border-slate-200 dark:border-slate-800 shadow-2xl"
-            >
-              <button
-                className="sticky top-4 right-4 ml-auto bg-black dark:bg-white text-white dark:text-black h-8 w-8 rounded-full flex items-center justify-center transition-transform hover:scale-110 z-50"
-                onClick={handleClose}
-                aria-label="Close dialog"
-              >
-                <X className="h-4 w-4" />
-              </button>
-              <motion.p
-                className="text-xs sm:text-sm font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider"
-              >
-                {card.category}
-              </motion.p>
-              <motion.h3
-                className="text-2xl md:text-4xl font-bold text-slate-900 dark:text-white mt-2 mb-6"
-              >
-                {card.title}
-              </motion.h3>
-              <div className="py-2">{card.content}</div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+      {mounted ? createPortal(overlay, document.body) : null}
       <motion.button
         onClick={handleOpen}
         className="rounded-3xl bg-slate-900 h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-between relative z-10 text-left border border-slate-800/80 group shadow-lg hover:shadow-2xl transition-all duration-300"
