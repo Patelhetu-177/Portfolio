@@ -23,6 +23,7 @@ import {
   N8nIcon,
 } from "@/components/Icons";
 import { PERSONAL_INFO } from "@/data/portfolioData";
+import { Reveal } from "@/components/ui/Reveal";
 
 export default function BentoAbout() {
   const items: HoverEffectItem[] = [
@@ -64,7 +65,7 @@ export default function BentoAbout() {
               </div>
               <div className="text-[10px] text-slate-400 font-mono mt-2 pt-1.5 border-t border-slate-200/60 dark:border-white/[0.06] flex justify-between">
                 <span>DSA • DBMS • OS • Networks</span>
-                <span>2022 – Present</span>
+                <span>2022 – 2026</span>
               </div>
             </div>
 
@@ -100,7 +101,7 @@ export default function BentoAbout() {
     {
       title: "Competitive Programming",
       description:
-        "450+ problems on LeetCode (1572) and CodeChef (3★, 1653) — DP, graphs, and query optimization.",
+        "500+ problems on LeetCode (1572) and CodeChef (3★, 1653) — DP, graphs, and query optimization.",
       header: (
         <div className="flex w-full flex-col gap-3 pb-3 mb-2 border-b border-slate-100 dark:border-white/[0.06]">
           <div className="flex items-center justify-between mb-2">
@@ -109,7 +110,7 @@ export default function BentoAbout() {
               <span>DSA &amp; Competitive Track</span>
             </div>
             <span className="text-[10px] font-mono font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full">
-              450+ Solved
+              500+ Solved
             </span>
           </div>
 
@@ -126,7 +127,7 @@ export default function BentoAbout() {
                 <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover/link:text-amber-500 transition-colors" />
               </div>
               <span className="text-amber-600 dark:text-amber-400 font-bold text-xs font-mono block">1572 Rating</span>
-              <span className="text-[9px] text-slate-400 font-medium">450+ DSA Solved</span>
+              <span className="text-[9px] text-slate-400 font-medium">500+ DSA Solved</span>
             </a>
 
             <a
@@ -181,7 +182,7 @@ export default function BentoAbout() {
             </div>
             <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between">
               <span className="font-bold text-slate-800 dark:text-slate-200">AvatarAI</span>
-              <span className="text-[9px] text-purple-600 dark:text-purple-400 font-semibold">Next.js 14 + Gemini AI</span>
+              <span className="text-[9px] text-purple-600 dark:text-purple-400 font-semibold">Next.js 14 + PINECONE</span>
             </div>
             <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between">
               <span className="font-bold text-slate-800 dark:text-slate-200">EventSphere</span>
@@ -198,7 +199,7 @@ export default function BentoAbout() {
     {
       title: "Industry Experience",
       description:
-        "Full Stack Developer at Vikartr Technologies since May 2025, after a web-dev internship at Cognifyz Technologies.",
+        "Full Stack Developer at Vikartr Technologies since January 2026, building web and mobile platforms end to end.",
       header: (
         <div className="flex w-full flex-col gap-3 pb-3 mb-2 border-b border-slate-100 dark:border-white/[0.06]">
           <div className="flex items-center justify-between mb-2">
@@ -207,7 +208,7 @@ export default function BentoAbout() {
               <span className="font-bold">VIKARTR TECHNOLOGIES LLP</span>
             </div>
             <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full font-bold">
-              May 2025 – Present
+              Jan 2026 – Present
             </span>
           </div>
 
@@ -234,11 +235,6 @@ export default function BentoAbout() {
               </p>
             </div>
           </div>
-
-          <div className="mt-2 pt-1.5 border-t border-slate-200/60 dark:border-white/[0.06] flex items-center justify-between text-[9px] font-mono text-slate-400">
-            <span>Prev · Cognifyz Technologies — Web Developer Intern</span>
-            <span>Jan – Mar 2025</span>
-          </div>
         </div>
       ),
       icon: <Briefcase className="h-4 w-4 text-emerald-500 shrink-0" />,
@@ -249,7 +245,7 @@ export default function BentoAbout() {
     {
       title: "Full-Stack & Cross-Platform",
       description:
-        "Next.js, React Native, Node/Express, MongoDB, PostgreSQL, and Prisma — with enterprise RBAC.",
+        "Next.js, React Native, Node/Express, MongoDB, PostgreSQL, and Prisma — with role-based access control.",
       header: (
         <div className="flex w-full flex-col gap-3 pb-3 mb-2 border-b border-slate-100 dark:border-white/[0.06]">
           <div className="flex items-center justify-between mb-2">
@@ -421,14 +417,14 @@ export default function BentoAbout() {
     <section id="about" className="py-16 sm:py-24 relative">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8">
+        <Reveal className="text-center max-w-3xl mx-auto mb-8">
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.03em] text-slate-900 dark:text-[#f2f2f2]">
             About Me &amp; Core Strengths
           </h2>
           <p className="text-sm sm:text-base text-slate-600 dark:text-[#a1a1aa] mt-2">
-            Academic record, competitive programming, shipped products on GitHub, hands-on engineering at Vikartr Technologies and Cognifyz, plus certifications and a hackathon finalist finish.
+            Academic record, competitive programming, shipped products on GitHub, hands-on engineering at Vikartr Technologies, plus certifications and a hackathon finalist finish.
           </p>
-        </div>
+        </Reveal>
 
         {/* Card Hover Effect Grid */}
         <HoverEffect items={items} className="w-full mx-auto" />

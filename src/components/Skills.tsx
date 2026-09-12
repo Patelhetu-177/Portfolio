@@ -21,6 +21,7 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 interface SkillItem {
   name: string;
@@ -266,14 +267,14 @@ export default function Skills() {
     <section id="skills" className="py-16 sm:py-24 relative overflow-hidden">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
+        <Reveal className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.03em] text-slate-900 dark:text-[#f2f2f2]">
-            Core Technical Skills
+            What&apos;s In My Stack
           </h2>
           <p className="text-sm sm:text-base text-slate-600 dark:text-[#a1a1aa] mt-2">
-            Languages, frameworks, databases, and tools I use to build scalable products.
+            Languages, frameworks, databases, and tools I reach for when building something real.
           </p>
-        </div>
+        </Reveal>
 
         {/* Category Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
@@ -293,15 +294,15 @@ export default function Skills() {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <RevealGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {filteredSkills.map((skill, idx) => {
             const styles = getAccentStyles(skill.accent);
             const Icon = skill.icon;
 
             return (
-              <div
-                key={idx}
-                className="group relative p-4 rounded-2xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200/40 dark:border-white/[0.04] transition-colors duration-200"
+              <RevealItem
+                key={skill.name}
+                className="group relative p-4 rounded-2xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 transition-colors duration-200"
               >
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div className={`p-2.5 rounded-xl ${styles.iconBg}`}>
@@ -330,10 +331,10 @@ export default function Skills() {
                     {skill.level}
                   </span>
                 </div>
-              </div>
+              </RevealItem>
             );
           })}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

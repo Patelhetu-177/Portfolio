@@ -14,6 +14,7 @@ import { Input, Textarea } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { GlobeMarker } from "@/components/ui/3d-globe";
 import confetti from "canvas-confetti";
+import { Reveal } from "@/components/ui/Reveal";
 
 // Dynamic import for 3D Globe to avoid SSR hydration mismatches
 const Globe3D = dynamic(() => import("@/components/ui/3d-globe"), {
@@ -118,9 +119,9 @@ export default function Contact() {
     <section id="contact" className="py-16 sm:py-20 relative">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          
+
           {/* ── Left Column: Clean Contact Overview & 3D Globe ───────────── */}
-          <div className="lg:col-span-6 space-y-5">
+          <Reveal className="lg:col-span-6 space-y-5">
             {/* Top Mail Icon Badge */}
             <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 dark:bg-white/[0.06] text-sky-500">
               <Mail className="w-4 h-4" />
@@ -204,11 +205,11 @@ export default function Contact() {
                 }}
               />
             </div>
-          </div>
+          </Reveal>
 
           {/* ── Right Column: Clean Form ──────────────────────── */}
-          <div className="lg:col-span-6">
-            <div className="w-full rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] p-5 sm:p-8 border border-slate-200/40 dark:border-white/[0.04]">
+          <Reveal delay={0.1} className="lg:col-span-6">
+            <div className="w-full rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] p-5 sm:p-8 border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30">
               <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
                 Send a Message
               </h3>
@@ -311,7 +312,7 @@ export default function Contact() {
                 )}
               </form>
             </div>
-          </div>
+          </Reveal>
 
         </div>
       </div>

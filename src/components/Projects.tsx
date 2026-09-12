@@ -13,6 +13,7 @@ import ProjectModal from "./ProjectModal";
 import ProjectImage from "@/components/ui/ProjectImage";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import { ProjectImageStack } from "@/components/ui/card-stack";
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -29,14 +30,14 @@ export default function Projects() {
     <section id="projects" className="py-16 sm:py-24 relative">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <Reveal className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
             Recent Projects &amp; Creations
           </h2>
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
-            A showcase of production-ready web apps, AI tools, and real-time platforms.
+            Web apps, AI tools, and real-time platforms I've built and shipped.
           </p>
-        </div>
+        </Reveal>
 
         {/* Category Filters */}
         <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -56,7 +57,7 @@ export default function Projects() {
         </div>
 
         {/* 3D Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 sm:gap-10">
+        <RevealGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 sm:gap-10">
           {filteredProjects.map((project) => {
             const projectImages =
               project.gallery && project.gallery.length > 0
@@ -64,8 +65,9 @@ export default function Projects() {
                 : [{ image: project.image, title: project.title }];
 
             return (
-              <CardContainer key={project.id} className="w-full h-full" containerClassName="w-full py-2">
-                <CardBody className="group/card relative rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200/40 dark:border-white/[0.04] p-6 sm:p-7 flex flex-col justify-between transition-colors duration-200 w-full h-full min-h-[480px]">
+              <RevealItem key={project.id}>
+              <CardContainer className="w-full h-full" containerClassName="w-full py-2">
+                <CardBody className="group/card relative rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 p-6 sm:p-7 flex flex-col justify-between transition-colors duration-200 w-full h-full min-h-[480px]">
                   
                   {/* 3D Project Image Card Stack */}
                   <CardItem translateZ="100" className="w-full relative aspect-video mt-2">
@@ -170,9 +172,10 @@ export default function Projects() {
 
               </CardBody>
             </CardContainer>
+            </RevealItem>
             );
           })}
-        </div>
+        </RevealGroup>
       </div>
 
       {/* Details Modal */}

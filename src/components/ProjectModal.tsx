@@ -54,6 +54,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <img
                   src={item.image}
                   alt={item.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-contain mx-auto"
                 />
               </div>
@@ -62,6 +64,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <img
                   src={item.image}
                   alt={item.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-auto object-contain mx-auto"
                 />
               </div>

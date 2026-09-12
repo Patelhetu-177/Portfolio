@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { PERSONAL_INFO, PROJECTS, EXPERIENCES, SKILL_CATEGORIES } from "@/data/portfolioData";
 import { Terminal as TerminalIcon, CornerDownLeft, RefreshCw, ExternalLink } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
+import { Reveal } from "@/components/ui/Reveal";
 
 interface LogEntry {
   command?: string;
@@ -29,7 +30,7 @@ export default function TerminalSection() {
       output: (
         <div className="space-y-1 text-slate-700 dark:text-slate-300">
           <p className="text-emerald-600 dark:text-emerald-400 font-bold">
-            🚀 Welcome to Hetu Patel&apos;s Interactive Dev Console [v1.0.0]
+            Welcome to Hetu Patel&apos;s Interactive Dev Console [v1.0.0]
           </p>
           <p className="text-xs text-slate-500 dark:text-slate-400">
             Type <span className="text-amber-600 dark:text-amber-400 font-mono font-semibold">help</span> or click any quick command below to inspect skills, projects, experience, or contact data.
@@ -167,7 +168,7 @@ export default function TerminalSection() {
           <div className="p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
             <div className="font-bold text-sky-600 dark:text-sky-400 text-sm">Pandit Deendayal Energy University (PDEU)</div>
             <div className="text-slate-700 dark:text-slate-200 mt-0.5">B.Tech in Information, Communication and Technology (ICT)</div>
-            <div className="text-emerald-600 dark:text-emerald-400 font-semibold mt-1">CGPA: 8.8 / 10.0 • Period: Aug 2022 – Present</div>
+            <div className="text-emerald-600 dark:text-emerald-400 font-semibold mt-1">CGPA: 8.8 / 10.0 • Period: Aug 2022 – May 2026</div>
           </div>
           <div className="p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
             <div className="font-bold text-sky-600 dark:text-sky-400 text-sm">Uma Higher Secondary School, Visnagar</div>
@@ -183,7 +184,7 @@ export default function TerminalSection() {
           <p>📞 Phone: <a href={`tel:${PERSONAL_INFO.phone}`} className="text-sky-600 dark:text-sky-400 underline font-mono font-semibold">{PERSONAL_INFO.phoneDisplay}</a></p>
           <p>💼 LinkedIn: <a href={PERSONAL_INFO.socials.linkedin} target="_blank" rel="noreferrer" className="text-sky-600 dark:text-sky-400 underline">{PERSONAL_INFO.socials.linkedin}</a></p>
           <p>🐙 GitHub: <a href={PERSONAL_INFO.socials.github} target="_blank" rel="noreferrer" className="text-sky-600 dark:text-sky-400 underline">{PERSONAL_INFO.socials.github}</a></p>
-          <p>🔥 LeetCode: <a href={PERSONAL_INFO.socials.leetcode} target="_blank" rel="noreferrer" className="text-amber-600 dark:text-amber-400 underline">{PERSONAL_INFO.socials.leetcode} (Rating 1572 | 450+ Solved)</a></p>
+          <p>🔥 LeetCode: <a href={PERSONAL_INFO.socials.leetcode} target="_blank" rel="noreferrer" className="text-amber-600 dark:text-amber-400 underline">{PERSONAL_INFO.socials.leetcode} (Rating 1572 | 500+ Solved)</a></p>
           <p>⭐ CodeChef: <a href={PERSONAL_INFO.socials.codechef} target="_blank" rel="noreferrer" className="text-amber-600 dark:text-amber-500 underline">{PERSONAL_INFO.socials.codechef} (3★ | 1653 Rating)</a></p>
         </div>
       );
@@ -252,17 +253,17 @@ export default function TerminalSection() {
     <section id="terminal" className="py-16 sm:py-24 relative">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8">
+        <Reveal className="text-center max-w-2xl mx-auto mb-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-[-0.03em] text-slate-900 dark:text-[#f2f2f2]">
             Developer Terminal
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-[#a1a1aa] mt-2">
             Run shell commands to inspect live skills, projects, experience, and contact data.
           </p>
-        </div>
+        </Reveal>
 
         {/* Terminal Window Container */}
-        <div className="rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200/40 dark:border-white/[0.04] text-slate-800 dark:text-slate-200 overflow-hidden font-mono text-xs sm:text-sm transition-colors duration-300">
+        <Reveal delay={0.1} className="rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 text-slate-800 dark:text-slate-200 overflow-hidden font-mono text-xs sm:text-sm transition-colors duration-300">
           {/* Top Title Bar */}
           <div className="bg-slate-200/40 dark:bg-white/[0.02] px-4 py-3 border-b border-slate-200/40 dark:border-white/[0.04] flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -335,7 +336,7 @@ export default function TerminalSection() {
               <CornerDownLeft className="w-3.5 h-3.5" />
             </button>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

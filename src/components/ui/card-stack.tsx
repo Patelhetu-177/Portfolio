@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import ProjectImage from "@/components/ui/ProjectImage";
 
@@ -96,15 +97,19 @@ export const ProjectImageStack = ({
             <div className="relative w-full h-full flex items-center justify-center bg-slate-950 overflow-hidden">
               {isMobilePortrait ? (
                 <>
-                  <img
+                  <Image
                     src={card.image}
                     alt=""
                     aria-hidden="true"
-                    className="absolute inset-0 w-full h-full object-cover blur-md opacity-30 scale-110 pointer-events-none"
+                    fill
+                    sizes="(max-width: 640px) 256px, (max-width: 1024px) 45vw, 480px"
+                    className="object-cover blur-md opacity-30 scale-110 pointer-events-none"
                   />
                   <img
                     src={card.image}
                     alt={card.title || "Project screenshot"}
+                    loading="lazy"
+                    decoding="async"
                     className="relative z-10 h-full w-auto max-w-full object-contain py-1 group-hover/stack:scale-105 transition-transform duration-300"
                   />
                 </>

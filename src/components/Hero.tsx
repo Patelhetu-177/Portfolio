@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import {
   Code2,
@@ -18,11 +19,13 @@ import { DraggableCardContainer, DraggableCardBody } from "@/components/ui/Dragg
 import { InfiniteMovingCards, MovingCardItem } from "@/components/ui/infinite-moving-cards";
 
 const FLIP_MESSAGES = [
-  "FULL-STACK DEVELOPER\n MERN STACK",
-  "MOBILE APP ENGINEER\nREACT NATIVE & EXPO",
-  "GENAI & AUTOMATIONS\n N8N FLOWS",
-  "LEETCODE 1572 RATING\n450+ PROBLEMS SOLVED",
+  "FULL-STACK DEVELOPER\nMERN + NEXT.JS",
+  "MOBILE APP BUILDER\nREACT NATIVE & EXPO",
+  "GENAI AUTOMATIONS\nN8N + PINECONE",
+  "LEETCODE RATING 1572\n500+ PROBLEMS SOLVED",
   "CODECHEF 3★ CODER\n1653 CONTEST RATING",
+  "BACKEND ENGINEER\nNODE.JS + EXPRESS ",
+  "CLOUD & CONTAINERS\nAWS + DOCKER",
 ];
 
 const HERO_CARDS = [
@@ -52,8 +55,8 @@ const MOVING_HIGHLIGHTS: MovingCardItem[] = [
   {
     name: "LeetCode 1572 Rating",
     title: "DSA Problem Solving",
-    badge: "450+ Solved",
-    quote: "Solved 450+ Data Structures & Algorithms problems across Dynamic Programming, Graphs, Trees, and SQL query optimizations.",
+    badge: "500+ Solved",
+    quote: "Solved 500+ Data Structures & Algorithms problems across Dynamic Programming, Graphs, Trees, and SQL query optimizations.",
     icon: Flame,
   },
   {
@@ -67,7 +70,7 @@ const MOVING_HIGHLIGHTS: MovingCardItem[] = [
     name: "Academic CGPA 8.8",
     title: "PDEU Gandhinagar",
     badge: "B.Tech ICT",
-    quote: "Pursuing B.Tech in Information, Communication & Technology with strong core foundations in Distributed Systems and Algorithms.",
+    quote: "Completed B.Tech in Information, Communication & Technology with strong core foundations in Distributed Systems and Algorithms.",
     icon: GraduationCap,
   },
   {
@@ -81,7 +84,7 @@ const MOVING_HIGHLIGHTS: MovingCardItem[] = [
     name: "Full-Stack Architecture",
     title: "Next.js 14 & MERN Stack",
     badge: "Next.js 14",
-    quote: "Building scalable platforms with Next.js App Router, Node.js, Express, MongoDB, PostgreSQL, and Prisma with enterprise RBAC.",
+    quote: "Building web and mobile platforms with Next.js App Router, Node.js, Express, MongoDB, PostgreSQL, and Prisma, with role-based access control.",
     icon: Layers,
   },
   {
@@ -93,13 +96,13 @@ const MOVING_HIGHLIGHTS: MovingCardItem[] = [
   },
   {
     name: "GenAI & Automations",
-    title: "Gemini AI & n8n Workflows",
+    title: "n8n Workflows",
     badge: "GenAI Suite",
     quote: "Engineered AvatarAI multi-modal studio with Pinecone vector embeddings for PDF/Excel QA and n8n automated customer chatbot.",
     icon: Bot,
   },
   {
-    name: "Enterprise Production",
+    name: "Vikartr Internship",
     title: "Vikartr Technologies LLP",
     badge: "Industry Work",
     quote: "Built Ethicare Financial Services calculators, and KARBYNX satellite MRV platform.",
@@ -181,11 +184,16 @@ export default function Hero() {
                 {HERO_CARDS.map((item) => (
                   <DraggableCardBody key={item.title} className={item.className}>
                     <div className="overflow-hidden rounded-2xl bg-white/90 p-2.5 dark:bg-slate-900/90 border border-slate-200/50 dark:border-white/[0.06]">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="pointer-events-none h-44 w-44 object-cover object-top rounded-xl sm:h-52 sm:w-52"
-                      />
+                      <div className="relative h-44 w-44 sm:h-52 sm:w-52 rounded-xl overflow-hidden">
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          fill
+                          priority
+                          sizes="(max-width: 640px) 176px, 208px"
+                          className="pointer-events-none object-cover object-top"
+                        />
+                      </div>
                       <h3 className="mt-2.5 text-center text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
                         {item.title}
                       </h3>
@@ -198,12 +206,12 @@ export default function Hero() {
         </div>
 
         {/* ROW 2: Details Section at Bottom (Bio, Socials & Slow Moving Single-Line Highlights) */}
-        <div className="p-6 sm:p-7 rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200/40 dark:border-white/[0.04] backdrop-blur-md space-y-6">
+        <div className="p-6 sm:p-7 rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 backdrop-blur-md space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             {/* Detailed Bio */}
             <div className="lg:col-span-8 space-y-2">
               <p className="text-xs sm:text-sm text-slate-700 dark:text-[#a1a1aa] leading-relaxed font-normal">
-                {PERSONAL_INFO.summary}
+                I care about owning a feature end-to-end — schema design, API contracts, and the interface people actually touch — and making sure it holds up once real users start relying on it.
               </p>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
                 {PERSONAL_INFO.secondaryBio}

@@ -1,15 +1,24 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { ImageOff } from "lucide-react";
 
 interface ProjectImageProps {
   src: string;
   alt: string;
   className?: string;
+  sizes?: string;
+  priority?: boolean;
 }
 
-export default function ProjectImage({ src, alt, className = "" }: ProjectImageProps) {
+export default function ProjectImage({
+  src,
+  alt,
+  className = "",
+  sizes = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px",
+  priority = false,
+}: ProjectImageProps) {
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
 
@@ -28,10 +37,13 @@ export default function ProjectImage({ src, alt, className = "" }: ProjectImageP
         </div>
       )}
 
-      <img
+      <Image
         src={src}
         alt={alt}
-        loading="lazy"
+        fill
+        sizes={sizes}
+        priority={priority}
+        loading={priority ? undefined : "lazy"}
         onLoad={() => setLoaded(true)}
         onError={() => setErrored(true)}
         className={`${className} transition-[opacity,transform] duration-500 ${

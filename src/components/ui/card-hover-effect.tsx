@@ -32,13 +32,17 @@ export const HoverEffect = ({
       {items.map((item, idx) => {
         const Wrapper = item.link ? "a" : "div";
         return (
+          <motion.div
+            key={idx}
+            className={item.className}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: (idx % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+          >
           <Wrapper
             href={item.link}
-            key={idx}
-            className={cn(
-              "relative group block p-1.5 h-full w-full",
-              item.className
-            )}
+            className="relative group block p-1.5 h-full w-full"
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -69,6 +73,7 @@ export const HoverEffect = ({
               <CardDescription>{item.description}</CardDescription>
             </Card>
           </Wrapper>
+          </motion.div>
         );
       })}
     </div>
@@ -85,7 +90,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-5 overflow-hidden bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200/40 dark:border-white/[0.04] relative z-10 flex flex-col justify-between transition-colors duration-200",
+        "rounded-2xl h-full w-full p-5 overflow-hidden bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 relative z-10 flex flex-col justify-between transition-colors duration-200",
         className
       )}
     >

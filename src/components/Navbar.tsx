@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { motion, Variants } from "framer-motion";
 import { useTheme } from "@/context/ThemeContext";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import {
@@ -25,6 +26,22 @@ const NAV_ITEMS = [
   { name: "Terminal", href: "#terminal", icon: TerminalIcon },
   { name: "Contact", href: "#contact", icon: Mail },
 ];
+
+const drawerListVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.05, delayChildren: 0.15 },
+  },
+};
+
+const drawerItemVariants: Variants = {
+  hidden: { opacity: 0, x: 24 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+  },
+};
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
@@ -71,7 +88,7 @@ export default function Navbar() {
           aria-label="Main Navigation"
           className={`pointer-events-auto flex w-full max-w-[1440px] items-center justify-between transition-all ${
             scrolled
-              ? "mt-2 md:mt-3 w-[96%] sm:w-[94%] rounded-full border border-slate-200/80 dark:border-white/[0.08] bg-white/90 dark:bg-[#0b1329]/90 p-2 sm:p-2.5 backdrop-blur-xl"
+              ? "mt-2 md:mt-3 w-[96%] sm:w-[94%] rounded-full border border-slate-200 dark:border-white/[0.1] bg-white/90 dark:bg-[#0b1329]/90 p-2 sm:p-2.5 backdrop-blur-xl shadow-md shadow-slate-200/50 dark:shadow-black/40"
               : "mt-0 w-full border-transparent bg-transparent px-4 py-3 md:px-8 lg:px-12 md:py-6"
           }`}
           style={{ transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)" }}
@@ -159,7 +176,7 @@ export default function Navbar() {
 
         {/* Slide-out Drawer */}
         <div
-          className={`absolute bottom-0 right-0 top-0 flex w-[85%] max-w-[340px] flex-col bg-white dark:bg-[#0b1329] border-l border-slate-200/80 dark:border-slate-800 transition-all duration-500 ease-out ${
+          className={`absolute bottom-0 right-0 top-0 flex w-[85%] max-w-[340px] flex-col bg-white dark:bg-[#0b1329] border-l border-slate-200 dark:border-slate-800 shadow-2xl shadow-black/20 transition-all duration-500 ease-out ${
             mobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -179,15 +196,21 @@ export default function Navbar() {
 
           {/* Drawer Body */}
           <div className="flex-1 px-5 py-6 flex flex-col justify-between overflow-y-auto">
-            <div className="grid grid-cols-1 gap-1.5">
+            <motion.div
+              className="grid grid-cols-1 gap-1.5"
+              initial="hidden"
+              animate={mobileMenuOpen ? "visible" : "hidden"}
+              variants={drawerListVariants}
+            >
               {NAV_ITEMS.map((link) => {
                 const Icon = link.icon;
                 const isActive = activeSection === link.href.substring(1);
                 return (
-                  <a
+                  <motion.a
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
+                    variants={drawerItemVariants}
                     className={`flex items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-semibold transition-colors ${
                       isActive
                         ? "bg-sky-500/10 text-sky-600 dark:bg-sky-500/15 dark:text-sky-400"
@@ -200,10 +223,10 @@ export default function Navbar() {
                       }`}
                     />
                     <span>{link.name}</span>
-                  </a>
+                  </motion.a>
                 );
               })}
-            </div>
+            </motion.div>
 
             {/* Drawer Footer */}
             <div className="pt-6 border-t border-slate-100 dark:border-slate-800/80 flex flex-col gap-3">

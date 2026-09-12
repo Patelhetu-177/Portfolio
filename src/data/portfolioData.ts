@@ -41,38 +41,14 @@ export interface Experience {
   projects: ExperienceProject[];
 }
 
-export interface Education {
-  institution: string;
-  degree: string;
-  period: string;
-  score: string;
-  highlights: string[];
-}
-
-export interface Certification {
-  title: string;
-  issuer: string;
-  topics: string;
-  credentialUrl?: string;
-  badge: string;
-}
-
 export const PERSONAL_INFO = {
   name: "Hetu Patel",
-  title: "Full Stack & Mobile Developer | GenAI & Automations",
-  roles: [
-    "Full-Stack Developer (MERN & Next.js)",
-    "Mobile Developer (React Native & Expo)",
-    "GenAI & Workflow Automation (n8n)",
-    "Competitive Programmer (LeetCode 1572 | CodeChef 3★)",
-  ],
   phone: "8160463306",
   phoneDisplay: "+91 8160463306",
   email: "hetu.alk.patel@gmail.com",
   location: "Gandhinagar / Gujarat, India",
-  summary: "Full Stack Developer specializing in MERN, Next.js, and Mobile Development (React Native/Expo) with a focus on GenAI and workflow automation (n8n). Proven problem-solver with a LeetCode rating of 1572 (450+ solved) and CodeChef 3★ (1653 rating). Experienced in building high-performance, cross-platform applications and secure enterprise-grade infrastructures while collaborating effectively in agile environments.",
-  bio: "Full Stack Developer specializing in MERN, Next.js, and Mobile Development (React Native/Expo) with a strong focus on GenAI and workflow automation (n8n). Proven problem-solver with deep competitive programming foundations and real-world production engineering experience.",
-  secondaryBio: "From building cross-platform sports booking apps (FirstBookIt) and AI productivity platforms (AvatarAI) to architecting enterprise role-based access control and real-time carbon market infrastructure, I create scalable, resilient, and engaging digital solutions.",
+  summary: "Full Stack Developer specializing in MERN, Next.js, and Mobile Development (React Native/Expo), with a focus on GenAI and workflow automation (n8n). Proven problem-solver with a LeetCode rating of 1572 (500+ solved) and CodeChef 3★ (1653 rating), and hands-on experience shipping cross-platform apps and role-based access systems in a fast-moving team.",
+  secondaryBio: "From a cross-platform sports booking app (FirstBookIt) and an AI productivity platform (AvatarAI) to role-based access systems and real-time carbon-market infrastructure — I like building things that actually ship, not just demos.",
   resumeUrl: "/assets/Hetu_Patel.pdf",
   profileImage: "/assets/about-pic.jpg",
   avatarImage: "/assets/profile-pic2.png",
@@ -83,7 +59,7 @@ export const PERSONAL_INFO = {
     codechef: "https://www.codechef.com/users/hetu_cp17",
   },
   stats: [
-    { label: "LeetCode Rating", value: "1572", subtext: "450+ Solved" },
+    { label: "LeetCode Rating", value: "1572", subtext: "500+ Solved" },
     { label: "CodeChef Rating", value: "3★ (1653)", subtext: "Active Competitive Coder" },
     { label: "Academic CGPA", value: "8.8", subtext: "B.Tech ICT @ PDEU" },
     { label: "Production Platforms", value: "6+", subtext: "Web, Mobile & AI" },
@@ -93,7 +69,7 @@ export const PERSONAL_INFO = {
 export const PROJECTS: Project[] = [
   {
     id: "firstbookit",
-    title: "FirstBookIt: iOS | Android | Web",
+    title: "FirstBookIt",
     tagline: "Cross-Platform Sports Venue & Tournament Management Ecosystem",
     description: "Full-scale sports venue discovery, dynamic booking, and live tournament platform built with React Native (Expo) and TypeScript, featuring split payments, GPS run tracking, and real-time tournament scoring.",
     category: "Mobile & Web",
@@ -126,7 +102,7 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/Patelhetu-177",
     liveUrl: "https://github.com/Patelhetu-177",
     featured: true,
-    metrics: "Production Ready • Cross-Platform",
+    metrics: "iOS • Android • Web",
     highlights: [
       "Engineered core turf/venue booking flow with court/slot selection, dynamic pricing, coupon codes, and Razorpay checkout with multi-player bill splitting.",
       "Developed Node.js/Express & Prisma/PostgreSQL backend powering owner/manager dashboards, payouts, dynamic pricing, and booking change approvals.",
@@ -163,7 +139,7 @@ export const PROJECTS: Project[] = [
     id: "eventsphere",
     title: "EventSphere",
     tagline: "Full-Stack Event Discovery, Ticketing & Management Platform",
-    description: "Enterprise event booking and ticketing system built with Next.js, TypeScript, Prisma, and PostgreSQL with role-based access for attendees, organizers, and administrators.",
+    description: "A full-stack event booking and ticketing system built with Next.js, TypeScript, Prisma, and PostgreSQL, with role-based access for attendees, organizers, and administrators.",
     category: "Full Stack",
     image: "/assets/eventsphere.png",
     gallery: [
@@ -253,24 +229,14 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 export const EXPERIENCES: Experience[] = [
   {
     company: "Vikartr Technologies LLP",
-    role: "Full Stack Web Developer Intern",
-    period: "May 2024 - July 2024",
-    location: "Ahmedabad, India",
+    role: "Full Stack Developer",
+    period: "January 2026 - Present",
+    location: "Gujarat, India",
     type: "Internship",
     projects: [
       {
-        name: "Hotel Property Management System (PMS)",
-        subtitle: "Multi-Tenant Cloud Operations Platform",
-        points: [
-          "Developed core modules for reservations, guest check-ins/check-outs, and multi-tier room inventory management.",
-          "Implemented strict Role-Based Access Control (RBAC) across front-desk clerks, managers, and super-admins.",
-          "Engineered live revenue reporting and dynamic tariff pricing calculators.",
-        ],
-        stack: ["React.js", "Node.js", "Express", "MongoDB", "Tailwind CSS", "JWT"],
-      },
-      {
         name: "Ethicare Financial Services",
-        subtitle: "Enterprise Advisory Platform",
+        subtitle: "Financial Calculators & Multi-Role Dashboards",
         points: [
           "Built full-stack web application with responsive UI, dynamic client portfolio reviews, and financial calculators.",
           "Implemented automated PDF generation for client investment summaries and lead-capture pipelines.",
@@ -290,46 +256,3 @@ export const EXPERIENCES: Experience[] = [
   },
 ];
 
-export const EDUCATION: Education[] = [
-  {
-    institution: "Pandit Deendayal Energy University (PDEU)",
-    degree: "B.Tech in Information & Communication Technology",
-    period: "2022 - 2026",
-    score: "CGPA: 8.8 / 10.0",
-    highlights: [
-      "Core Coursework: Data Structures & Algorithms, Operating Systems, Database Management Systems, Computer Networks, Object-Oriented Programming, Distributed Computing.",
-      "Active Competitive Programmer & Tech Club Lead.",
-    ],
-  },
-  {
-    institution: "Uma Higher Secondary School",
-    degree: "Higher Secondary Certificate (HSC) - GSEB",
-    period: "2020 - 2022",
-    score: "Percentage: 92.0%",
-    highlights: [
-      "Specialization in Science Stream (Physics, Chemistry, Mathematics).",
-      "Ranked in top percentile of the district.",
-    ],
-  },
-];
-
-export const CERTIFICATIONS: Certification[] = [
-  {
-    title: "HTML, CSS, and Javascript for Web Developers",
-    issuer: "Johns Hopkins University (Coursera)",
-    topics: "Responsive Web Design, Modern JavaScript, Front-End Frameworks",
-    badge: "JHU Certified",
-  },
-  {
-    title: "Programming in Python",
-    issuer: "Meta (Coursera)",
-    topics: "Data Structures, OOP, Scripting, Algorithms",
-    badge: "Meta Certified",
-  },
-  {
-    title: "Web Development Internship Certificate",
-    issuer: "Cognifyz Technologies",
-    topics: "Full-Stack Development, React.js, Backend APIs",
-    badge: "Industry Certified",
-  },
-];
