@@ -16,6 +16,7 @@ import {
   Briefcase,
   GraduationCap,
   Mail,
+  Search,
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -126,6 +127,17 @@ export default function Navbar() {
 
           {/* Right Action Buttons */}
           <div className="ml-auto mr-1 flex shrink-0 items-center gap-2 md:ml-0 md:mr-0">
+            {/* Command Palette Trigger */}
+            <button
+              onClick={() => window.dispatchEvent(new Event("toggle-command-palette"))}
+              aria-label="Open command palette"
+              title="Search (Ctrl/Cmd+K)"
+              className="hidden sm:flex h-9 items-center gap-1.5 rounded-full bg-slate-100 dark:bg-white/[0.06] px-3 text-slate-600 dark:text-slate-300 transition-colors hover:bg-slate-200 dark:hover:bg-white/[0.1]"
+            >
+              <Search className="h-3.5 w-3.5" />
+              <kbd className="text-[10px] font-mono font-semibold">⌘K</kbd>
+            </button>
+
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}

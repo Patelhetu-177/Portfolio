@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/og";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 
-export const runtime = "edge";
 export const alt = "Hetu Patel — Full-Stack Web Developer & Problem Solver";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

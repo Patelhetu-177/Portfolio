@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import Image from "next/image";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import {
@@ -9,24 +9,13 @@ import {
   Smartphone,
   Layers,
   Bot,
-  Sparkles,
   Briefcase,
   GraduationCap,
 } from "lucide-react";
 import { Github, Linkedin } from "@/components/Icons";
-import { TextFlippingBoard } from "@/components/ui/TextFlippingBoard";
 import { DraggableCardContainer, DraggableCardBody } from "@/components/ui/DraggableCard";
 import { InfiniteMovingCards, MovingCardItem } from "@/components/ui/infinite-moving-cards";
-
-const FLIP_MESSAGES = [
-  "FULL-STACK DEVELOPER\nMERN + NEXT.JS",
-  "MOBILE APP BUILDER\nREACT NATIVE & EXPO",
-  "GENAI AUTOMATIONS\nN8N + PINECONE",
-  "LEETCODE RATING 1572\n500+ PROBLEMS SOLVED",
-  "CODECHEF 3★ CODER\n1653 CONTEST RATING",
-  "BACKEND ENGINEER\nNODE.JS + EXPRESS ",
-  "CLOUD & CONTAINERS\nAWS + DOCKER",
-];
+import { Button as MovingBorderButton } from "@/components/ui/moving-border";
 
 const HERO_CARDS = [
   {
@@ -111,35 +100,16 @@ const MOVING_HIGHLIGHTS: MovingCardItem[] = [
 ];
 
 export default function Hero() {
-  const [msgIdx, setMsgIdx] = useState(0);
-
-  const nextMessage = useCallback(() => {
-    setMsgIdx((prev) => (prev + 1) % FLIP_MESSAGES.length);
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(nextMessage, 3600);
-    return () => clearInterval(timer);
-  }, [nextMessage]);
-
   return (
     <section
       id="hero"
       className="relative min-h-screen pt-24 pb-16 lg:pt-28 lg:pb-20 flex flex-col justify-center overflow-hidden"
     >
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10 space-y-10">
-        {/* ROW 1: Side-by-Side (Flipping Keyboard on Left, 4-Image Draggable Grid on Right) */}
+        {/* ROW 1: Side-by-Side (Headline on Left, 4-Image Draggable Grid on Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left Column: Flipping Board + Clean Headline & AttendMetric-styled Buttons */}
+          {/* Left Column: Clean Headline & AttendMetric-styled Buttons */}
           <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left space-y-5">
-            {/* Flipping Keyboard Board */}
-            <div className="w-full flex justify-center lg:justify-start">
-              <TextFlippingBoard
-                text={FLIP_MESSAGES[msgIdx]}
-                className="max-w-[480px] w-full"
-              />
-            </div>
-
             {/* Clean Solid Headline */}
             <div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-[-0.03em] text-slate-900 dark:text-[#f2f2f2] leading-[1.15]">
@@ -152,12 +122,17 @@ export default function Hero() {
 
             {/* AttendMetric Clean Action Buttons */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 w-full sm:w-auto pt-2">
-              <a
+              <MovingBorderButton
+                as="a"
                 href="#projects"
-                className="inline-flex h-12 sm:h-14 items-center justify-center rounded-full bg-slate-900 px-7 text-[15px] font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-100"
+                borderRadius="9999px"
+                duration={2800}
+                containerClassName="w-full sm:w-auto"
+                borderClassName="bg-[radial-gradient(#38bdf8_0%,#0284c7_45%,transparent_75%)]"
+                className="bg-slate-900 px-7 text-[15px] font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-100"
               >
                 View Projects <span className="ml-2 font-normal">→</span>
-              </a>
+              </MovingBorderButton>
 
               <a
                 href={PERSONAL_INFO.resumeUrl}

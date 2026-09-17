@@ -22,6 +22,7 @@ import {
   Zap,
 } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { CardSpotlight } from "@/components/ui/CardSpotlight";
 
 interface SkillItem {
   name: string;
@@ -300,10 +301,8 @@ export default function Skills() {
             const Icon = skill.icon;
 
             return (
-              <RevealItem
-                key={skill.name}
-                className="group relative p-4 rounded-2xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 transition-colors duration-200"
-              >
+              <RevealItem key={skill.name}>
+              <CardSpotlight className="group p-4 rounded-2xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 transition-colors duration-200">
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div className={`p-2.5 rounded-xl ${styles.iconBg}`}>
                     <Icon className="w-5 h-5" />
@@ -331,6 +330,7 @@ export default function Skills() {
                     {skill.level}
                   </span>
                 </div>
+              </CardSpotlight>
               </RevealItem>
             );
           })}

@@ -24,6 +24,29 @@ const HIGHLIGHT_COLORS = [
   "#2dd4bf", // Teal
 ];
 
+const STRUCTURAL_TAGS = new Set(["MAIN", "BODY", "HTML", "SECTION", "NAV", "FOOTER"]);
+
+function hasVisibleSurface(style: CSSStyleDeclaration) {
+  const bg = style.backgroundColor;
+  const isTransparentBg =
+    !bg || bg === "transparent" || bg === "rgba(0, 0, 0, 0)";
+  const hasBoxShadow = style.boxShadow && style.boxShadow !== "none";
+  const bgImage = style.backgroundImage;
+  const hasBgImage = !!bgImage && bgImage !== "none";
+  return !isTransparentBg || !!hasBoxShadow || hasBgImage;
+}
+
+/** True if the point sits over a real content surface (card, button, image, form, etc.) rather than bare page background. */
+function isOverContent(x: number, y: number, canvas: HTMLCanvasElement) {
+  const stack = document.elementsFromPoint(x, y);
+  for (const el of stack) {
+    if (el === canvas) continue;
+    if (STRUCTURAL_TAGS.has(el.tagName)) break;
+    if (hasVisibleSurface(getComputedStyle(el))) return true;
+  }
+  return false;
+}
+
 export function BackgroundBoxes() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const { theme } = useTheme();
@@ -58,13 +81,10 @@ export function BackgroundBoxes() {
     const scale = 0.72;
 
     const screenToGrid = (sx: number, sy: number) => {
-      // Offset from center
       const cx = sx - width * 0.45;
       const cy = sy - height * 0.45;
 
-      // Inverse 2D affine transformation
       const cosY = Math.cos(radY);
-      const sinY = Math.sin(radY);
       const tanX = Math.tan(radX);
 
       const unscaledX = cx / scale;
@@ -93,7 +113,6 @@ export function BackgroundBoxes() {
         decay: 0.015 + Math.random() * 0.01,
       });
 
-      // Also illuminate 1-2 adjacent cells with lower alpha for rich fluid trail
       if (Math.random() < 0.6) {
         const offsetCol = col + (Math.random() > 0.5 ? 1 : -1);
         const offsetKey = `${offsetCol}_${row}`;
@@ -119,7 +138,12 @@ export function BackgroundBoxes() {
       if (col !== lastCol || row !== lastRow) {
         lastCol = col;
         lastRow = row;
-        activateCell(col, row);
+        // Only light up cells over bare page background — never under a
+        // real card/button/image, so the effect can't be mistaken for an
+        // interactive element sitting behind the content.
+        if (!isOverContent(clientX, clientY, canvas)) {
+          activateCell(col, row);
+        }
       }
     };
 
@@ -133,19 +157,12 @@ export function BackgroundBoxes() {
     window.addEventListener("touchmove", handlePointerMove, { passive: true });
     window.addEventListener("resize", handleResize);
 
-    // Initial ambient trigger so the board comes alive
-    for (let i = 0; i < 8; i++) {
-      const randomCol = Math.floor((Math.random() - 0.5) * 20);
-      const randomRow = Math.floor((Math.random() - 0.5) * 20);
-      activateCell(randomCol, randomRow);
-    }
-
     // ── Render Loop ──────────────────────────────────────────────────
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
       ctx.save();
-      // Apply AttendMetric / Aceternity 3D isometric matrix
+      // Apply isometric matrix
       ctx.translate(width * 0.45, height * 0.45);
       ctx.scale(scale, scale);
       ctx.transform(1, Math.tan(radY), Math.tan(radX), 1, 0, 0);
@@ -190,7 +207,7 @@ export function BackgroundBoxes() {
       }
       ctx.stroke();
 
-      // 3. Draw Active Illuminated Hover Cells
+      // 3. Draw Active Illuminated Hover Cells (bare background only)
       activeCells.forEach((cell, key) => {
         cell.alpha -= cell.decay;
 
@@ -207,7 +224,6 @@ export function BackgroundBoxes() {
         ctx.globalAlpha = currentAlpha;
         ctx.fillRect(x + 1, y + 1, cellWidth - 2, cellHeight - 2);
 
-        // Highlight border
         ctx.strokeStyle = cell.color;
         ctx.lineWidth = 1.5;
         ctx.globalAlpha = Math.min(1, currentAlpha * 1.3);
@@ -233,6 +249,7 @@ export function BackgroundBoxes() {
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-0 h-full w-full"
     />
   );

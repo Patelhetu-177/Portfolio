@@ -4,6 +4,7 @@ import React from "react";
 import { EXPERIENCES } from "@/data/portfolioData";
 import { Briefcase, Calendar, MapPin, CheckCircle2 } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { CardSpotlight } from "@/components/ui/CardSpotlight";
 
 export default function Experience() {
   return (
@@ -29,7 +30,7 @@ export default function Experience() {
               </div>
 
               {/* Experience Card */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 transition-colors duration-200">
+              <CardSpotlight className="p-6 sm:p-8 rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 transition-colors duration-200">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-200/40 dark:border-white/[0.04]">
                   <div>
                     <span className="inline-block px-3 py-1 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 text-xs font-bold mb-2">
@@ -95,7 +96,7 @@ export default function Experience() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </CardSpotlight>
             </RevealItem>
           ))}
         </RevealGroup>

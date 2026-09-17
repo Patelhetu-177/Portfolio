@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HoverEffect, HoverEffectItem } from "@/components/ui/card-hover-effect";
 import {
   GraduationCap,
@@ -24,8 +24,47 @@ import {
 } from "@/components/Icons";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import { Reveal } from "@/components/ui/Reveal";
+import { CountUp } from "@/components/ui/CountUp";
 
 export default function BentoAbout() {
+  const [ghStats, setGhStats] = useState<{ total: number; bestStreak: number } | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    // "y=all" returns every year on record (not just the trailing 365 days),
+    // so the totals reflect the whole account history.
+    fetch("https://github-contributions-api.jogruber.de/v4/Patelhetu-177?y=all")
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((data: { total?: Record<string, number>; contributions: { count: number }[] }) => {
+        if (cancelled) return;
+        const days = data.contributions;
+        const total =
+          Object.values(data.total ?? {}).reduce((sum, n) => sum + n, 0) ||
+          days.reduce((sum, d) => sum + d.count, 0);
+
+        // Longest streak: the best run of consecutive contribution days
+        // across the account's full history.
+        let bestStreak = 0;
+        let current = 0;
+        for (const day of days) {
+          if (day.count > 0) {
+            current++;
+            bestStreak = Math.max(bestStreak, current);
+          } else {
+            current = 0;
+          }
+        }
+
+        setGhStats({ total, bestStreak });
+      })
+      .catch(() => {
+        // Silently keep the static fallback badge if the API is unreachable.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const items: HoverEffectItem[] = [
     // 1. Education & Academic Excellence (Span 2)
     {
@@ -60,7 +99,7 @@ export default function BentoAbout() {
                   </div>
                 </div>
                 <span className="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded shrink-0">
-                  CGPA: 8.8 / 10
+                  CGPA: <CountUp value={8.8} decimals={1} /> / 10
                 </span>
               </div>
               <div className="text-[10px] text-slate-400 font-mono mt-2 pt-1.5 border-t border-slate-200/60 dark:border-white/[0.06] flex justify-between">
@@ -74,7 +113,7 @@ export default function BentoAbout() {
               <div className="flex items-start justify-between gap-1">
                 <div>
                   <div className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                    <BookOpen className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
+                    <BookOpen className="w-3.5 h-3.5 text-sky-500 shrink-0" />
                     <span>Uma Higher Secondary</span>
                   </div>
                   <div className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
@@ -82,7 +121,7 @@ export default function BentoAbout() {
                   </div>
                 </div>
                 <span className="text-[11px] font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded shrink-0">
-                  Score: 92.0%
+                  Score: <CountUp value={92} decimals={1} suffix="%" />
                 </span>
               </div>
               <div className="text-[10px] text-slate-400 font-mono mt-2 pt-1.5 border-t border-slate-200/60 dark:border-white/[0.06] flex justify-between">
@@ -110,7 +149,7 @@ export default function BentoAbout() {
               <span>DSA &amp; Competitive Track</span>
             </div>
             <span className="text-[10px] font-mono font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full">
-              500+ Solved
+              <CountUp value={500} />+ Solved
             </span>
           </div>
 
@@ -126,8 +165,8 @@ export default function BentoAbout() {
                 <span className="text-[10px] font-semibold">LeetCode</span>
                 <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover/link:text-amber-500 transition-colors" />
               </div>
-              <span className="text-amber-600 dark:text-amber-400 font-bold text-xs font-mono block">1572 Rating</span>
-              <span className="text-[9px] text-slate-400 font-medium">500+ DSA Solved</span>
+              <span className="text-amber-600 dark:text-amber-400 font-bold text-xs font-mono block"><CountUp value={1572} /> Rating</span>
+              <span className="text-[9px] text-slate-400 font-medium"><CountUp value={500} />+ DSA Solved</span>
             </a>
 
             <a
@@ -141,7 +180,7 @@ export default function BentoAbout() {
                 <span className="text-[10px] font-semibold">CodeChef</span>
                 <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover/link:text-sky-500 transition-colors" />
               </div>
-              <span className="text-sky-600 dark:text-sky-400 font-bold text-xs font-mono block">3★ (1653)</span>
+              <span className="text-sky-600 dark:text-sky-400 font-bold text-xs font-mono block">3★ (<CountUp value={1653} />)</span>
               <span className="text-[9px] text-slate-400 font-medium">Division 2 Rank</span>
             </a>
           </div>
@@ -170,8 +209,18 @@ export default function BentoAbout() {
               <span>@Patelhetu-177</span>
               <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover/gh:text-slate-600 dark:group-hover/gh:text-slate-200 transition-colors" />
             </a>
-            <span className="text-[10px] font-mono font-bold text-slate-600 dark:text-slate-300 bg-slate-200/60 dark:bg-slate-800 px-2 py-0.5 rounded-full">
-              6+ Projects
+            <span className="flex items-center gap-1 text-[10px] font-mono font-bold text-slate-600 dark:text-slate-300 bg-slate-200/60 dark:bg-slate-800 px-2 py-0.5 rounded-full">
+              {ghStats && (
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" title="Live from GitHub" />
+              )}
+              {ghStats ? (
+                <>
+                  <CountUp value={ghStats.total} /> Commits · Best Streak{" "}
+                  <CountUp value={ghStats.bestStreak} />d
+                </>
+              ) : (
+                "6+ Projects"
+              )}
             </span>
           </div>
 
