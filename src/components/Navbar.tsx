@@ -214,6 +214,20 @@ export default function Navbar() {
               animate={mobileMenuOpen ? "visible" : "hidden"}
               variants={drawerListVariants}
             >
+              <motion.button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  window.dispatchEvent(new Event("toggle-command-palette"));
+                }}
+                variants={drawerItemVariants}
+                className="flex items-center gap-3 rounded-xl px-3.5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800/60 transition-colors"
+              >
+                <Search className="w-4 h-4 text-slate-400 dark:text-slate-500" />
+                <span className="flex-1 text-left">Search</span>
+                <kbd className="text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500">
+                  ⌘K
+                </kbd>
+              </motion.button>
               {NAV_ITEMS.map((link) => {
                 const Icon = link.icon;
                 const isActive = activeSection === link.href.substring(1);
