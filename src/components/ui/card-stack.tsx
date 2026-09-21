@@ -74,7 +74,7 @@ export const ProjectImageStack = ({
           <motion.div
             key={card.id}
             className={cn(
-              "absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-slate-950",
+              "absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-zinc-950",
               index === 0
                 ? "z-10 shadow-lg"
                 : index === 1
@@ -94,7 +94,7 @@ export const ProjectImageStack = ({
               ease: [0.23, 1, 0.32, 1],
             }}
           >
-            <div className="relative w-full h-full flex items-center justify-center bg-slate-950 overflow-hidden">
+            <div className="relative w-full h-full flex items-center justify-center bg-zinc-950 overflow-hidden">
               {isMobilePortrait ? (
                 <>
                   <Image
@@ -122,7 +122,7 @@ export const ProjectImageStack = ({
               )}
 
               {/* Subtle Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-black/10 to-transparent pointer-events-none z-10" />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-black/10 to-transparent pointer-events-none z-10" />
             </div>
           </motion.div>
         );

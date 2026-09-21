@@ -84,7 +84,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-screen flex flex-col bg-[#f8fafc] dark:bg-[#060913] text-slate-900 dark:text-slate-100 antialiased selection:bg-sky-500 selection:text-white"
+        className="min-h-screen flex flex-col bg-[#f8fafc] dark:bg-[#09090b] text-slate-900 dark:text-zinc-100 antialiased selection:bg-sky-500 selection:text-white"
         suppressHydrationWarning
       >
         <script

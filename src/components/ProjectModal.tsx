@@ -44,8 +44,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               {item.description}
             </p>
             {isDesktop ? (
-              <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-neutral-700 bg-slate-950">
-                <div className="bg-slate-900/95 px-3 py-2 border-b border-white/10 flex items-center gap-1.5">
+              <div className="rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-neutral-700 bg-zinc-950">
+                <div className="bg-zinc-900/95 px-3 py-2 border-b border-white/10 flex items-center gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
                   <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                   <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
@@ -60,7 +60,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 />
               </div>
             ) : (
-              <div className="max-w-xs mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-800 bg-slate-950">
+              <div className="max-w-xs mx-auto rounded-3xl overflow-hidden shadow-2xl border-4 border-zinc-800 bg-zinc-950">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -88,7 +88,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 {project.category}
               </span>
               {project.metrics && (
-                <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                <span className="text-xs font-medium text-slate-500 dark:text-zinc-400">
                   • {project.metrics}
                 </span>
               )}
@@ -151,7 +151,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1.5 rounded-xl bg-white dark:bg-neutral-900 text-slate-700 dark:text-slate-300 text-xs font-mono font-medium border border-slate-200 dark:border-neutral-700 shadow-xs"
+                  className="px-3 py-1.5 rounded-xl bg-white dark:bg-neutral-900 text-slate-700 dark:text-zinc-300 text-xs font-mono font-medium border border-slate-200 dark:border-neutral-700 shadow-xs"
                 >
                   {tag}
                 </span>
@@ -166,7 +166,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 text-slate-800 dark:text-slate-200 font-semibold text-xs hover:border-sky-500 transition-colors shadow-xs"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 text-slate-800 dark:text-zinc-200 font-semibold text-xs hover:border-sky-500 transition-colors shadow-xs"
           >
             <Github className="w-3.5 h-3.5" />
             <span>Source Code</span>

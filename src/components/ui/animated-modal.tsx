@@ -136,7 +136,7 @@ export const ModalBody = ({
           <motion.div
             ref={modalRef}
             className={cn(
-              "w-full max-w-3xl md:max-w-4xl max-h-[90vh] bg-white dark:bg-[#0c1624] border border-slate-200/90 dark:border-slate-800 rounded-3xl relative z-[100000] flex flex-col overflow-hidden shadow-2xl",
+              "w-full max-w-3xl md:max-w-4xl max-h-[90vh] bg-white dark:bg-[#111113] border border-slate-200/90 dark:border-zinc-800 rounded-3xl relative z-[100000] flex flex-col overflow-hidden shadow-2xl",
               className
             )}
             initial={{
@@ -196,7 +196,7 @@ export const ModalFooter = ({
   return (
     <div
       className={cn(
-        "flex items-center justify-end p-4 sm:p-5 bg-slate-50 dark:bg-[#09111c] border-t border-slate-200/80 dark:border-slate-800/80 gap-3",
+        "flex items-center justify-end p-4 sm:p-5 bg-slate-50 dark:bg-[#0c0c0e] border-t border-slate-200/80 dark:border-zinc-800/80 gap-3",
         className
       )}
     >
@@ -229,7 +229,7 @@ const CloseIcon = () => {
   return (
     <button
       onClick={() => setOpen(false)}
-      className="absolute top-4 right-4 z-50 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all group"
+      className="absolute top-4 right-4 z-50 p-2 rounded-full hover:bg-slate-100 dark:hover:bg-zinc-800 text-slate-500 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white transition-all group"
       aria-label="Close modal"
     >
       <svg

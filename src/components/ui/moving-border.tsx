@@ -58,7 +58,7 @@ export function Button({
       {/* Inner Button Body */}
       <div
         className={cn(
-          "relative z-10 flex h-full w-full items-center justify-center px-7 text-[15px] font-semibold transition-colors border border-slate-700/40 bg-slate-900 text-white backdrop-blur-xl hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:border-slate-200/80 dark:hover:bg-slate-100",
+          "relative z-10 flex h-full w-full items-center justify-center px-7 text-[15px] font-semibold transition-colors border border-slate-700/40 bg-slate-900 text-white backdrop-blur-xl hover:bg-slate-800 dark:bg-white dark:text-zinc-900 dark:border-zinc-200/80 dark:hover:bg-zinc-100",
           className
         )}
         style={{

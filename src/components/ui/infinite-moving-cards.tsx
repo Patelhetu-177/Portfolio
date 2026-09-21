@@ -91,13 +91,13 @@ export const InfiniteMovingCards = ({
                 </div>
               </div>
               {item.badge && (
-                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-white/80 dark:bg-white/[0.06] text-slate-700 dark:text-slate-300 shrink-0">
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md bg-white/80 dark:bg-white/[0.06] text-slate-700 dark:text-zinc-300 shrink-0">
                   {item.badge}
                 </span>
               )}
             </div>
 
-            <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300 font-normal">
+            <p className="text-xs leading-relaxed text-slate-600 dark:text-zinc-300 font-normal">
               &quot;{item.quote}&quot;
             </p>
           </li>

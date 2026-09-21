@@ -22,7 +22,6 @@ import {
   Zap,
 } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
-import { CardSpotlight } from "@/components/ui/CardSpotlight";
 
 interface SkillItem {
   name: string;
@@ -286,7 +285,7 @@ export default function Skills() {
               className={`px-4 py-2 rounded-full text-xs font-medium transition-colors duration-200 ${
                 activeCategory === cat
                   ? "bg-slate-900 text-white dark:bg-white dark:text-black"
-                  : "bg-slate-100 dark:bg-white/[0.05] text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/[0.1]"
+                  : "bg-slate-100 dark:bg-white/[0.05] text-slate-700 dark:text-zinc-300 hover:bg-slate-200 dark:hover:bg-white/[0.1]"
               }`}
             >
               {cat}
@@ -302,7 +301,7 @@ export default function Skills() {
 
             return (
               <RevealItem key={skill.name}>
-              <CardSpotlight className="group p-4 rounded-2xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 transition-colors duration-200">
+              <div className="group p-4 rounded-2xl bg-slate-100/60 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 transition-colors duration-200">
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div className={`p-2.5 rounded-xl ${styles.iconBg}`}>
                     <Icon className="w-5 h-5" />
@@ -319,18 +318,18 @@ export default function Skills() {
                       {skill.name}
                     </h3>
                   </div>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-snug">
+                  <p className="text-xs text-slate-500 dark:text-zinc-400 mt-1 leading-snug">
                     {skill.subtitle}
                   </p>
                 </div>
 
                 <div className="mt-3 pt-2.5 border-t border-slate-200/40 dark:border-white/[0.04] flex items-center justify-between text-[11px]">
-                  <span className="text-slate-500 dark:text-slate-400 font-medium">Proficiency:</span>
-                  <span className="font-semibold text-slate-700 dark:text-slate-300 font-mono">
+                  <span className="text-slate-500 dark:text-zinc-400 font-medium">Proficiency:</span>
+                  <span className="font-semibold text-slate-700 dark:text-zinc-300 font-mono">
                     {skill.level}
                   </span>
                 </div>
-              </CardSpotlight>
+              </div>
               </RevealItem>
             );
           })}

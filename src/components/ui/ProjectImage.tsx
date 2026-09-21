@@ -25,13 +25,13 @@ export default function ProjectImage({
   return (
     <>
       {!loaded && !errored && (
-        <div className="absolute inset-0 overflow-hidden bg-slate-200 dark:bg-slate-800">
+        <div className="absolute inset-0 overflow-hidden bg-slate-200 dark:bg-zinc-800">
           <div className="absolute inset-0 -translate-x-full animate-[shimmer_1.6s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent dark:via-white/10" />
         </div>
       )}
 
       {errored && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-slate-200 dark:bg-zinc-800 text-slate-400 dark:text-zinc-500">
           <ImageOff className="w-6 h-6" />
           <span className="text-[11px] font-mono">preview unavailable</span>
         </div>

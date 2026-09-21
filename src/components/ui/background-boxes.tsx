@@ -174,7 +174,7 @@ export function BackgroundBoxes() {
 
       // 1. Draw Static Grid Lines
       ctx.lineWidth = 1;
-      ctx.strokeStyle = isDark ? "rgba(51, 65, 85, 0.45)" : "rgba(203, 213, 225, 0.75)";
+      ctx.strokeStyle = isDark ? "rgba(63, 63, 70, 0.45)" : "rgba(203, 213, 225, 0.75)";
 
       ctx.beginPath();
       for (let c = minCol; c <= maxCol; c++) {
@@ -190,7 +190,7 @@ export function BackgroundBoxes() {
       ctx.stroke();
 
       // 2. Draw Static Corner Crosshair Plus Markers (+)
-      ctx.strokeStyle = isDark ? "rgba(71, 85, 105, 0.5)" : "rgba(148, 163, 184, 0.6)";
+      ctx.strokeStyle = isDark ? "rgba(82, 82, 91, 0.5)" : "rgba(148, 163, 184, 0.6)";
       ctx.lineWidth = 1;
       const crossSize = 3;
 

@@ -20,7 +20,7 @@ import { Reveal } from "@/components/ui/Reveal";
 const Globe3D = dynamic(() => import("@/components/ui/3d-globe"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-[320px] sm:h-[380px] w-full items-center justify-center rounded-2xl bg-slate-50 dark:bg-[#0c1322]">
+    <div className="flex h-[320px] sm:h-[380px] w-full items-center justify-center rounded-2xl bg-slate-50 dark:bg-[#111113]">
       <span className="text-xs font-mono text-slate-400 animate-pulse">
         Initializing 3D Globe...
       </span>
@@ -132,28 +132,28 @@ export default function Contact() {
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
                 Get In Touch
               </h2>
-              <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-md">
+              <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-zinc-400 leading-relaxed max-w-md">
                 Have an engineering opportunity, full-stack or mobile project, or looking to collaborate? Feel free to reach out.
               </p>
             </div>
 
             {/* Horizontal Links with Dot Separators */}
-            <div className="pt-1 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
+            <div className="pt-1 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-sm font-medium text-slate-600 dark:text-zinc-400">
               <a
                 href={`mailto:${PERSONAL_INFO.email}`}
-                className="hover:text-sky-500 transition-colors text-slate-800 dark:text-slate-300 font-mono text-xs"
+                className="hover:text-sky-500 transition-colors text-slate-800 dark:text-zinc-300 font-mono text-xs"
               >
                 {PERSONAL_INFO.email}
               </a>
-              <span className="text-slate-400 dark:text-slate-600">•</span>
+              <span className="text-slate-400 dark:text-zinc-600">•</span>
               <a
                 href={`tel:${PERSONAL_INFO.phone}`}
-                className="hover:text-sky-500 transition-colors text-slate-800 dark:text-slate-300 font-mono text-xs"
+                className="hover:text-sky-500 transition-colors text-slate-800 dark:text-zinc-300 font-mono text-xs"
               >
                 {PERSONAL_INFO.phoneDisplay}
               </a>
-              <span className="text-slate-400 dark:text-slate-600">•</span>
-              <span className="text-slate-700 dark:text-slate-400 text-xs">
+              <span className="text-slate-400 dark:text-zinc-600">•</span>
+              <span className="text-slate-700 dark:text-zinc-400 text-xs">
                 {PERSONAL_INFO.location}
               </span>
             </div>
@@ -164,7 +164,7 @@ export default function Contact() {
                 href={PERSONAL_INFO.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/[0.06] text-xs font-medium text-slate-800 dark:text-slate-200 hover:text-sky-500 transition-colors"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/[0.06] text-xs font-medium text-slate-800 dark:text-zinc-200 hover:text-sky-500 transition-colors"
               >
                 <FileDown className="w-3.5 h-3.5 text-sky-500" />
                 <span>Resume PDF</span>
@@ -174,7 +174,7 @@ export default function Contact() {
                 href={PERSONAL_INFO.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/[0.06] text-xs font-medium text-slate-800 dark:text-slate-200 hover:text-sky-500 transition-colors"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/[0.06] text-xs font-medium text-slate-800 dark:text-zinc-200 hover:text-sky-500 transition-colors"
               >
                 <Github className="w-3.5 h-3.5" />
                 <span>GitHub</span>
@@ -184,7 +184,7 @@ export default function Contact() {
                 href={PERSONAL_INFO.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/[0.06] text-xs font-medium text-slate-800 dark:text-slate-200 hover:text-[#0077b5] transition-colors"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/[0.06] text-xs font-medium text-slate-800 dark:text-zinc-200 hover:text-[#0077b5] transition-colors"
               >
                 <Linkedin className="w-3.5 h-3.5 text-[#0077b5]" />
                 <span>LinkedIn</span>
@@ -209,11 +209,11 @@ export default function Contact() {
 
           {/* ── Right Column: Clean Form ──────────────────────── */}
           <Reveal delay={0.1} className="lg:col-span-6">
-            <div className="w-full rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] p-5 sm:p-8 border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30">
+            <div className="w-full rounded-3xl bg-slate-100/60 dark:bg-white/[0.05] p-5 sm:p-8 border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30">
               <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
                 Send a Message
               </h3>
-              <p className="mt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              <p className="mt-1 text-xs sm:text-sm text-slate-600 dark:text-zinc-400">
                 Fill out the form below and I&apos;ll get back to you promptly.
               </p>
 
@@ -288,7 +288,7 @@ export default function Contact() {
                 </LabelInputContainer>
 
                 <button
-                  className="h-11 w-full rounded-full bg-slate-900 text-white dark:bg-white dark:text-black font-semibold transition-colors hover:bg-slate-800 dark:hover:bg-slate-100 disabled:opacity-50 text-sm"
+                  className="h-11 w-full rounded-full bg-slate-900 text-white dark:bg-white dark:text-black font-semibold transition-colors hover:bg-slate-800 dark:hover:bg-zinc-100 disabled:opacity-50 text-sm"
                   type="submit"
                   disabled={status === "submitting"}
                 >

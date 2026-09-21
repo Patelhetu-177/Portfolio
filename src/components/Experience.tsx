@@ -4,7 +4,6 @@ import React from "react";
 import { EXPERIENCES } from "@/data/portfolioData";
 import { Briefcase, Calendar, MapPin, CheckCircle2 } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
-import { CardSpotlight } from "@/components/ui/CardSpotlight";
 
 export default function Experience() {
   return (
@@ -15,7 +14,7 @@ export default function Experience() {
           <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
             Where I&apos;ve Worked
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mt-2">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 mt-2">
             Full-stack and mobile engineering at Vikartr Technologies, from financial calculators to satellite-powered carbon infrastructure.
           </p>
         </Reveal>
@@ -25,12 +24,12 @@ export default function Experience() {
           {EXPERIENCES.map((exp, idx) => (
             <RevealItem key={idx} className="relative pl-6 sm:pl-10 group">
               {/* Timeline Node Icon */}
-              <div className="absolute -left-[16px] top-1.5 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-sky-500 flex items-center justify-center transition-colors">
+              <div className="absolute -left-[16px] top-1.5 w-8 h-8 rounded-full bg-slate-100 dark:bg-zinc-800 text-sky-500 flex items-center justify-center transition-colors">
                 <Briefcase className="w-3.5 h-3.5" />
               </div>
 
               {/* Experience Card */}
-              <CardSpotlight className="p-6 sm:p-8 rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 transition-colors duration-200">
+              <div className="p-6 sm:p-8 rounded-3xl bg-slate-100/60 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 transition-colors duration-200">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-200/40 dark:border-white/[0.04]">
                   <div>
                     <span className="inline-block px-3 py-1 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 text-xs font-bold mb-2">
@@ -44,8 +43,8 @@ export default function Experience() {
                     </h4>
                   </div>
 
-                  <div className="flex flex-col sm:items-end text-xs text-slate-500 dark:text-slate-400 gap-1">
-                    <div className="flex items-center gap-1.5 font-semibold text-slate-700 dark:text-slate-300">
+                  <div className="flex flex-col sm:items-end text-xs text-slate-500 dark:text-zinc-400 gap-1">
+                    <div className="flex items-center gap-1.5 font-semibold text-slate-700 dark:text-zinc-300">
                       <Calendar className="w-3.5 h-3.5 text-sky-500" />
                       <span>{exp.period}</span>
                     </div>
@@ -61,19 +60,19 @@ export default function Experience() {
                   {exp.projects.map((proj, pIdx) => (
                     <div
                       key={pIdx}
-                      className="p-5 rounded-2xl bg-white/70 dark:bg-white/[0.04] border border-slate-200/70 dark:border-white/[0.06]"
+                      className="p-5 rounded-2xl bg-white/70 dark:bg-white/[0.07] border border-slate-200/70 dark:border-white/[0.06]"
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
                         <h5 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white flex items-center gap-2">
                           <span className="w-2 h-2 rounded-full bg-sky-500" />
                           {proj.name}
                         </h5>
-                        <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
+                        <span className="text-[11px] font-medium text-slate-500 dark:text-zinc-400">
                           {proj.subtitle}
                         </span>
                       </div>
 
-                      <ul className="space-y-2 mb-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                      <ul className="space-y-2 mb-4 text-xs sm:text-sm text-slate-600 dark:text-zinc-300">
                         {proj.points.map((point, ptIdx) => (
                           <li key={ptIdx} className="flex items-start gap-2">
                             <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
@@ -87,7 +86,7 @@ export default function Experience() {
                         {proj.stack.map((st, stIdx) => (
                           <span
                             key={stIdx}
-                            className="px-2 py-0.5 rounded-md bg-white dark:bg-white/[0.08] text-slate-700 dark:text-slate-200 text-[10px] font-semibold"
+                            className="px-2 py-0.5 rounded-md bg-white dark:bg-white/[0.08] text-slate-700 dark:text-zinc-200 text-[10px] font-semibold"
                           >
                             {st}
                           </span>
@@ -96,7 +95,7 @@ export default function Experience() {
                     </div>
                   ))}
                 </div>
-              </CardSpotlight>
+              </div>
             </RevealItem>
           ))}
         </RevealGroup>

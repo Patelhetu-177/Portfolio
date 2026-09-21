@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { HoverEffect, HoverEffectItem } from "@/components/ui/card-hover-effect";
 import {
   GraduationCap,
@@ -25,45 +25,13 @@ import {
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import { Reveal } from "@/components/ui/Reveal";
 import { CountUp } from "@/components/ui/CountUp";
+import { useGithubContributions } from "@/lib/useGithubContributions";
 
 export default function BentoAbout() {
-  const [ghStats, setGhStats] = useState<{ total: number; bestStreak: number } | null>(null);
-
-  useEffect(() => {
-    let cancelled = false;
-    // "y=all" returns every year on record (not just the trailing 365 days),
-    // so the totals reflect the whole account history.
-    fetch("https://github-contributions-api.jogruber.de/v4/Patelhetu-177?y=all")
-      .then((res) => (res.ok ? res.json() : Promise.reject()))
-      .then((data: { total?: Record<string, number>; contributions: { count: number }[] }) => {
-        if (cancelled) return;
-        const days = data.contributions;
-        const total =
-          Object.values(data.total ?? {}).reduce((sum, n) => sum + n, 0) ||
-          days.reduce((sum, d) => sum + d.count, 0);
-
-        // Longest streak: the best run of consecutive contribution days
-        // across the account's full history.
-        let bestStreak = 0;
-        let current = 0;
-        for (const day of days) {
-          if (day.count > 0) {
-            current++;
-            bestStreak = Math.max(bestStreak, current);
-          } else {
-            current = 0;
-          }
-        }
-
-        setGhStats({ total, bestStreak });
-      })
-      .catch(() => {
-        // Silently keep the static fallback badge if the API is unreachable.
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const { stats: ghContrib } = useGithubContributions("Patelhetu-177");
+  const ghStats = ghContrib
+    ? { total: ghContrib.total, bestStreak: ghContrib.bestStreak }
+    : null;
 
   const items: HoverEffectItem[] = [
     // 1. Education & Academic Excellence (Span 2)
@@ -76,7 +44,7 @@ export default function BentoAbout() {
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-1.5">
               <GraduationCap className="w-4 h-4 text-blue-500" />
-              <span className="text-xs font-bold text-slate-800 dark:text-slate-200">
+              <span className="text-xs font-bold text-slate-800 dark:text-zinc-200">
                 Formal Education &amp; Degrees
               </span>
             </div>
@@ -87,14 +55,14 @@ export default function BentoAbout() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {/* PDEU Card */}
-            <div className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] flex flex-col justify-between">
+            <div className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.07] flex flex-col justify-between">
               <div className="flex items-start justify-between gap-1">
                 <div>
                   <div className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
                     <School className="w-3.5 h-3.5 text-blue-500 shrink-0" />
                     <span>PDEU Gandhinagar</span>
                   </div>
-                  <div className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
+                  <div className="text-[11px] text-slate-600 dark:text-zinc-300 mt-0.5">
                     B.Tech in ICT
                   </div>
                 </div>
@@ -102,21 +70,21 @@ export default function BentoAbout() {
                   CGPA: <CountUp value={8.8} decimals={1} /> / 10
                 </span>
               </div>
-              <div className="text-[10px] text-slate-400 font-mono mt-2 pt-1.5 border-t border-slate-200/60 dark:border-white/[0.06] flex justify-between">
+              <div className="text-[10px] text-slate-500 dark:text-zinc-300 font-mono mt-2 pt-1.5 border-t border-slate-200/60 dark:border-white/[0.06] flex justify-between">
                 <span>DSA • DBMS • OS • Networks</span>
                 <span>2022 – 2026</span>
               </div>
             </div>
 
             {/* Uma Higher Secondary Card */}
-            <div className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] flex flex-col justify-between">
+            <div className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.07] flex flex-col justify-between">
               <div className="flex items-start justify-between gap-1">
                 <div>
                   <div className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
                     <BookOpen className="w-3.5 h-3.5 text-sky-500 shrink-0" />
                     <span>Uma Higher Secondary</span>
                   </div>
-                  <div className="text-[11px] text-slate-600 dark:text-slate-300 mt-0.5">
+                  <div className="text-[11px] text-slate-600 dark:text-zinc-300 mt-0.5">
                     HSC Science • Visnagar
                   </div>
                 </div>
@@ -124,7 +92,7 @@ export default function BentoAbout() {
                   Score: <CountUp value={92} decimals={1} suffix="%" />
                 </span>
               </div>
-              <div className="text-[10px] text-slate-400 font-mono mt-2 pt-1.5 border-t border-slate-200/60 dark:border-white/[0.06] flex justify-between">
+              <div className="text-[10px] text-slate-500 dark:text-zinc-300 font-mono mt-2 pt-1.5 border-t border-slate-200/60 dark:border-white/[0.06] flex justify-between">
                 <span>ACPC Rank 846</span>
                 <span>2020 – 2022</span>
               </div>
@@ -144,7 +112,7 @@ export default function BentoAbout() {
       header: (
         <div className="flex w-full flex-col gap-3 pb-3 mb-2 border-b border-slate-100 dark:border-white/[0.06]">
           <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-zinc-300">
               <Flame className="w-3.5 h-3.5 text-amber-500" />
               <span>DSA &amp; Competitive Track</span>
             </div>
@@ -158,30 +126,30 @@ export default function BentoAbout() {
               href={PERSONAL_INFO.socials.leetcode}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] hover:bg-amber-500/10 transition-colors block group/link"
+              className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.07] hover:bg-amber-500/10 transition-colors block group/link"
               title="View Hetu's LeetCode Profile"
             >
-              <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-0.5">
+              <div className="flex items-center justify-between text-slate-500 dark:text-zinc-400 mb-0.5">
                 <span className="text-[10px] font-semibold">LeetCode</span>
                 <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover/link:text-amber-500 transition-colors" />
               </div>
               <span className="text-amber-600 dark:text-amber-400 font-bold text-xs font-mono block"><CountUp value={1572} /> Rating</span>
-              <span className="text-[9px] text-slate-400 font-medium"><CountUp value={500} />+ DSA Solved</span>
+              <span className="text-[9px] text-slate-500 dark:text-zinc-300 font-medium"><CountUp value={500} />+ DSA Solved</span>
             </a>
 
             <a
               href={PERSONAL_INFO.socials.codechef}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.04] hover:bg-sky-500/10 transition-colors block group/link"
+              className="p-3 rounded-xl bg-white/70 dark:bg-white/[0.07] hover:bg-sky-500/10 transition-colors block group/link"
               title="View Hetu's CodeChef Profile"
             >
-              <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-0.5">
+              <div className="flex items-center justify-between text-slate-500 dark:text-zinc-400 mb-0.5">
                 <span className="text-[10px] font-semibold">CodeChef</span>
                 <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover/link:text-sky-500 transition-colors" />
               </div>
               <span className="text-sky-600 dark:text-sky-400 font-bold text-xs font-mono block">3★ (<CountUp value={1653} />)</span>
-              <span className="text-[9px] text-slate-400 font-medium">Division 2 Rank</span>
+              <span className="text-[9px] text-slate-500 dark:text-zinc-300 font-medium">Division 2 Rank</span>
             </a>
           </div>
         </div>
@@ -202,14 +170,14 @@ export default function BentoAbout() {
               href={PERSONAL_INFO.socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors group/gh"
+              className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-zinc-300 hover:text-slate-900 dark:hover:text-white transition-colors group/gh"
               title="View Hetu's GitHub profile"
             >
-              <Github className="w-3.5 h-3.5 text-slate-800 dark:text-slate-200" />
+              <Github className="w-3.5 h-3.5 text-slate-800 dark:text-zinc-200" />
               <span>@Patelhetu-177</span>
-              <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover/gh:text-slate-600 dark:group-hover/gh:text-slate-200 transition-colors" />
+              <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover/gh:text-slate-600 dark:group-hover/gh:text-zinc-200 transition-colors" />
             </a>
-            <span className="flex items-center gap-1 text-[10px] font-mono font-bold text-slate-600 dark:text-slate-300 bg-slate-200/60 dark:bg-slate-800 px-2 py-0.5 rounded-full">
+            <span className="flex items-center gap-1 text-[10px] font-mono font-bold text-slate-600 dark:text-zinc-300 bg-slate-200/60 dark:bg-zinc-800 px-2 py-0.5 rounded-full">
               {ghStats && (
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" title="Live from GitHub" />
               )}
@@ -225,16 +193,16 @@ export default function BentoAbout() {
           </div>
 
           <div className="space-y-1.5 text-[10px]">
-            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between">
-              <span className="font-bold text-slate-800 dark:text-slate-200">FirstBookIt</span>
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between">
+              <span className="font-bold text-slate-800 dark:text-zinc-200">FirstBookIt</span>
               <span className="text-[9px] text-indigo-600 dark:text-indigo-400 font-semibold">React Native + Expo</span>
             </div>
-            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between">
-              <span className="font-bold text-slate-800 dark:text-slate-200">AvatarAI</span>
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between">
+              <span className="font-bold text-slate-800 dark:text-zinc-200">AvatarAI</span>
               <span className="text-[9px] text-purple-600 dark:text-purple-400 font-semibold">Next.js 14 + PINECONE</span>
             </div>
-            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between">
-              <span className="font-bold text-slate-800 dark:text-slate-200">EventSphere</span>
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between">
+              <span className="font-bold text-slate-800 dark:text-zinc-200">EventSphere</span>
               <span className="text-[9px] text-sky-600 dark:text-sky-400 font-semibold">Next.js + Prisma</span>
             </div>
           </div>
@@ -252,7 +220,7 @@ export default function BentoAbout() {
       header: (
         <div className="flex w-full flex-col gap-3 pb-3 mb-2 border-b border-slate-100 dark:border-white/[0.06]">
           <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-zinc-300">
               <Briefcase className="w-3.5 h-3.5 text-emerald-500" />
               <span className="font-bold">VIKARTR TECHNOLOGIES LLP</span>
             </div>
@@ -264,22 +232,22 @@ export default function BentoAbout() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[10px]">
           
 
-            <div className="p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04]">
+            <div className="p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.07]">
               <div className="font-bold text-slate-900 dark:text-white flex justify-between">
                 <span>Ethicare</span>
                 <span className="text-indigo-600 dark:text-indigo-400 font-mono font-bold">FinTech</span>
               </div>
-              <p className="text-[9px] text-slate-500 dark:text-slate-400 mt-1">
+              <p className="text-[9px] text-slate-500 dark:text-zinc-300 mt-1">
                 Stamp-duty, loan &amp; interest calculators with User·Agent·Staff dashboards
               </p>
             </div>
 
-            <div className="p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.04]">
+            <div className="p-2.5 rounded-xl bg-white/70 dark:bg-white/[0.07]">
               <div className="font-bold text-slate-900 dark:text-white flex justify-between">
                 <span>KARBYNX</span>
                 <span className="text-sky-600 dark:text-sky-400 font-mono font-bold">Carbon MRV</span>
               </div>
-              <p className="text-[9px] text-slate-500 dark:text-slate-400 mt-1">
+              <p className="text-[9px] text-slate-500 dark:text-zinc-300 mt-1">
                 React Native + Expo app syncing IoT sensor &amp; satellite data for automated MRV
               </p>
             </div>
@@ -298,7 +266,7 @@ export default function BentoAbout() {
       header: (
         <div className="flex w-full flex-col gap-3 pb-3 mb-2 border-b border-slate-100 dark:border-white/[0.06]">
           <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-zinc-300">
               <Layers className="w-3.5 h-3.5 text-blue-500" />
               <span>Full-Stack &amp; Mobile</span>
             </div>
@@ -308,30 +276,30 @@ export default function BentoAbout() {
           </div>
 
           <div className="space-y-1.5">
-            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between text-[10px]">
               <div>
-                <span className="font-bold text-slate-800 dark:text-slate-200 block">Next.js App Router, SSR/SSG</span>
-                <span className="text-slate-500 dark:text-slate-400 text-[9px]">REST APIs · JWT auth · middleware</span>
+                <span className="font-bold text-slate-800 dark:text-zinc-200 block">Next.js App Router, SSR/SSG</span>
+                <span className="text-slate-500 dark:text-zinc-300 text-[9px]">REST APIs · JWT auth · middleware</span>
               </div>
               <span className="text-[9px] font-mono font-bold text-blue-600 dark:text-blue-400 bg-blue-500/10 px-1.5 py-0.5 rounded shrink-0">
                 Web
               </span>
             </div>
 
-            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between text-[10px]">
               <div>
-                <span className="font-bold text-slate-800 dark:text-slate-200 block">React Native + Expo apps</span>
-                <span className="text-slate-500 dark:text-slate-400 text-[9px]">iOS &amp; Android · GPS · maps</span>
+                <span className="font-bold text-slate-800 dark:text-zinc-200 block">React Native + Expo apps</span>
+                <span className="text-slate-500 dark:text-zinc-300 text-[9px]">iOS &amp; Android · GPS · maps</span>
               </div>
               <span className="text-[9px] font-mono font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 px-1.5 py-0.5 rounded shrink-0">
                 Mobile
               </span>
             </div>
 
-            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between text-[10px]">
               <div>
-                <span className="font-bold text-slate-800 dark:text-slate-200 block">MongoDB, PostgreSQL, Prisma</span>
-                <span className="text-slate-500 dark:text-slate-400 text-[9px]">Schema design · multi-role RBAC</span>
+                <span className="font-bold text-slate-800 dark:text-zinc-200 block">MongoDB, PostgreSQL, Prisma</span>
+                <span className="text-slate-500 dark:text-zinc-300 text-[9px]">Schema design · multi-role RBAC</span>
               </div>
               <span className="text-[9px] font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded shrink-0">
                 Data
@@ -352,7 +320,7 @@ export default function BentoAbout() {
       header: (
         <div className="flex w-full flex-col gap-3 pb-3 mb-2 border-b border-slate-100 dark:border-white/[0.06]">
           <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-zinc-300">
               <AwsIcon className="w-3.5 h-3.5 text-amber-500 shrink-0" />
               <span>AWS &amp; GenAI Pipelines</span>
             </div>
@@ -362,12 +330,12 @@ export default function BentoAbout() {
           </div>
 
           <div className="space-y-1.5">
-            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between text-[10px]">
               <div className="flex items-center gap-1.5 min-w-0">
                 <GeminiIcon className="w-3.5 h-3.5 text-purple-500 shrink-0" />
                 <div className="min-w-0">
-                  <span className="font-bold text-slate-800 dark:text-slate-200 block">Gemini multi-modal models</span>
-                  <span className="text-slate-500 dark:text-slate-400 text-[9px]">Chat, vision &amp; embeddings</span>
+                  <span className="font-bold text-slate-800 dark:text-zinc-200 block">Gemini multi-modal models</span>
+                  <span className="text-slate-500 dark:text-zinc-300 text-[9px]">Chat, vision &amp; embeddings</span>
                 </div>
               </div>
               <span className="text-[9px] font-mono font-bold text-purple-600 dark:text-purple-400 bg-purple-500/10 px-1.5 py-0.5 rounded shrink-0">
@@ -375,12 +343,12 @@ export default function BentoAbout() {
               </span>
             </div>
 
-            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between text-[10px]">
               <div className="flex items-center gap-1.5 min-w-0">
                 <PineconeIcon className="w-3.5 h-3.5 text-sky-500 shrink-0" />
                 <div className="min-w-0">
-                  <span className="font-bold text-slate-800 dark:text-slate-200 block">Pinecone vector search</span>
-                  <span className="text-slate-500 dark:text-slate-400 text-[9px]">Q&amp;A over PDF &amp; Excel docs</span>
+                  <span className="font-bold text-slate-800 dark:text-zinc-200 block">Pinecone vector search</span>
+                  <span className="text-slate-500 dark:text-zinc-300 text-[9px]">Q&amp;A over PDF &amp; Excel docs</span>
                 </div>
               </div>
               <span className="text-[9px] font-mono font-bold text-sky-600 dark:text-sky-400 bg-sky-500/10 px-1.5 py-0.5 rounded shrink-0">
@@ -388,12 +356,12 @@ export default function BentoAbout() {
               </span>
             </div>
 
-            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between text-[10px]">
               <div className="flex items-center gap-1.5 min-w-0">
                 <AwsIcon className="w-3.5 h-3.5 text-amber-500 shrink-0" />
                 <div className="min-w-0">
-                  <span className="font-bold text-slate-800 dark:text-slate-200 block">AWS EC2, S3, IAM, Lambda</span>
-                  <span className="text-slate-500 dark:text-slate-400 text-[9px]">n8n webhook automation flows</span>
+                  <span className="font-bold text-slate-800 dark:text-zinc-200 block">AWS EC2, S3, IAM, Lambda</span>
+                  <span className="text-slate-500 dark:text-zinc-300 text-[9px]">n8n webhook automation flows</span>
                 </div>
               </div>
               <span className="text-[9px] font-mono font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded shrink-0">
@@ -415,7 +383,7 @@ export default function BentoAbout() {
       header: (
         <div className="flex w-full flex-col gap-3 pb-3 mb-2 border-b border-slate-100 dark:border-white/[0.06]">
           <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-slate-300">
+            <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-700 dark:text-zinc-300">
               <Award className="w-3.5 h-3.5 text-blue-500" />
               <span>Verified Credentials</span>
             </div>
@@ -425,30 +393,30 @@ export default function BentoAbout() {
           </div>
 
           <div className="space-y-1.5">
-            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between text-[10px]">
               <div>
-                <span className="font-bold text-slate-800 dark:text-slate-200 block">HTML, CSS &amp; JavaScript for Web Developers</span>
-                <span className="text-slate-500 dark:text-slate-400 text-[9px]">Johns Hopkins University</span>
+                <span className="font-bold text-slate-800 dark:text-zinc-200 block">HTML, CSS &amp; JavaScript for Web Developers</span>
+                <span className="text-slate-500 dark:text-zinc-300 text-[9px]">Johns Hopkins University</span>
               </div>
               <span className="text-[9px] font-mono font-bold text-blue-600 dark:text-blue-400 bg-blue-500/10 px-1.5 py-0.5 rounded shrink-0">
                 Verified
               </span>
             </div>
 
-            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between text-[10px]">
               <div>
-                <span className="font-bold text-slate-800 dark:text-slate-200 block">Web Apps with Express.js &amp; Node.js</span>
-                <span className="text-slate-500 dark:text-slate-400 text-[9px]">Meta (Coursera)</span>
+                <span className="font-bold text-slate-800 dark:text-zinc-200 block">Web Apps with Express.js &amp; Node.js</span>
+                <span className="text-slate-500 dark:text-zinc-300 text-[9px]">Meta (Coursera)</span>
               </div>
               <span className="text-[9px] font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded shrink-0">
                 Verified
               </span>
             </div>
 
-            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.04] flex items-center justify-between text-[10px]">
+            <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between text-[10px]">
               <div>
-                <span className="font-bold text-slate-800 dark:text-slate-200 block">Smart India Hackathon 2024</span>
-                <span className="text-slate-500 dark:text-slate-400 text-[9px]">Cyber Triage Tool · college round</span>
+                <span className="font-bold text-slate-800 dark:text-zinc-200 block">Smart India Hackathon 2024</span>
+                <span className="text-slate-500 dark:text-zinc-300 text-[9px]">Cyber Triage Tool · college round</span>
               </div>
               <span className="text-[9px] font-mono font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded shrink-0">
                 Finalist

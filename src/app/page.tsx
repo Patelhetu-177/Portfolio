@@ -2,9 +2,11 @@ import ParticleBackground from "@/components/ParticleBackground";
 import GrainOverlay from "@/components/GrainOverlay";
 import ScrollProgress from "@/components/ScrollProgress";
 import CommandPalette from "@/components/CommandPalette";
+import KonamiEasterEgg from "@/components/KonamiEasterEgg";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import BentoAbout from "@/components/BentoAbout";
+import LiveStats from "@/components/LiveStats";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
@@ -30,10 +32,14 @@ export default function Home() {
       {/* Cmd/Ctrl+K Command Palette */}
       <CommandPalette />
 
+      {/* Hidden Konami-code easter egg */}
+      <KonamiEasterEgg />
+
       {/* Main Page Sections */}
       <div className="relative z-10">
         <Hero />
         <BentoAbout />
+        <LiveStats />
         <Skills />
         <Experience />
         <Projects />

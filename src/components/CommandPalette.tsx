@@ -16,6 +16,7 @@ import {
   Moon,
   FileDown,
   CornerDownLeft,
+  Activity,
 } from "lucide-react";
 import { Github, Linkedin } from "@/components/Icons";
 import { PERSONAL_INFO } from "@/data/portfolioData";
@@ -84,6 +85,7 @@ export default function CommandPalette() {
   const commands: CommandItem[] = useMemo(
     () => [
       { id: "nav-about", label: "Go to About", description: "Education, competitive programming & GitHub activity", icon: <GraduationCap className="w-4 h-4" />, action: goTo("about"), group: "Navigate" },
+      { id: "nav-stats", label: "Go to Live Stats", description: "Real-time LeetCode & GitHub stats, heatmap included", icon: <Activity className="w-4 h-4" />, action: goTo("stats"), group: "Navigate" },
       { id: "nav-skills", label: "Go to Skills", description: "Languages, frameworks & tools I use", icon: <Code2 className="w-4 h-4" />, action: goTo("skills"), group: "Navigate" },
       { id: "nav-experience", label: "Go to Experience", description: "Work history at Vikartr Technologies", icon: <Briefcase className="w-4 h-4" />, action: goTo("experience"), group: "Navigate" },
       { id: "nav-projects", label: "Go to Projects", description: "FirstBookIt, AvatarAI, EventSphere & more", icon: <FolderGit2 className="w-4 h-4" />, action: goTo("projects"), group: "Navigate" },
@@ -140,7 +142,7 @@ export default function CommandPalette() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setOpen(false)}
-            className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm"
+            className="fixed inset-0 bg-zinc-950/60 backdrop-blur-sm"
           />
 
           <motion.div
@@ -148,7 +150,7 @@ export default function CommandPalette() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -10 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl border border-slate-200 dark:border-white/[0.1] bg-white dark:bg-[#0c1624] shadow-2xl"
+            className="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl border border-slate-200 dark:border-white/[0.1] bg-white dark:bg-[#111113] shadow-2xl"
           >
             <div className="flex items-center gap-2.5 border-b border-slate-100 dark:border-white/[0.06] px-4 py-3">
               <Search className="h-4 w-4 text-slate-400 shrink-0" />
@@ -161,9 +163,9 @@ export default function CommandPalette() {
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder="Jump to a section, open a link..."
-                className="w-full bg-transparent text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 outline-none"
+                className="w-full bg-transparent text-sm text-slate-900 dark:text-zinc-100 placeholder:text-slate-400 outline-none"
               />
-              <kbd className="hidden sm:inline-block rounded-md border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 px-1.5 py-0.5 text-[10px] font-mono text-slate-500 dark:text-slate-400">
+              <kbd className="hidden sm:inline-block rounded-md border border-slate-200 dark:border-zinc-700 bg-slate-50 dark:bg-zinc-800 px-1.5 py-0.5 text-[10px] font-mono text-slate-500 dark:text-zinc-300">
                 Esc
               </kbd>
             </div>
@@ -178,7 +180,7 @@ export default function CommandPalette() {
                 if (groupItems.length === 0) return null;
                 return (
                   <div key={group} className="mb-1.5 last:mb-0">
-                    <p className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                    <p className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-300 dark:text-zinc-500">
                       {group}
                     </p>
                     {groupItems.map((item) => {
@@ -199,13 +201,13 @@ export default function CommandPalette() {
                           <span className="flex-1 min-w-0">
                             <span
                               className={`block text-sm ${
-                                active ? "text-sky-700 dark:text-sky-300" : "text-slate-700 dark:text-slate-300"
+                                active ? "text-sky-700 dark:text-sky-300" : "text-slate-700 dark:text-zinc-300"
                               }`}
                             >
                               {item.label}
                             </span>
                             {item.description && (
-                              <span className="block truncate text-[11px] text-slate-400 dark:text-slate-500">
+                              <span className="block truncate text-[11px] text-slate-400 dark:text-zinc-500">
                                 {item.description}
                               </span>
                             )}

@@ -243,7 +243,7 @@ function Marker({
 
             {/* Small Location Label beside the image */}
             {marker.label && (
-              <div className="px-2 py-0.5 rounded-full bg-slate-950/90 border border-white/20 text-[9px] font-medium text-white shadow-md whitespace-nowrap flex items-center gap-1 backdrop-blur-md">
+              <div className="px-2 py-0.5 rounded-full bg-zinc-950/90 border border-white/20 text-[9px] font-medium text-white shadow-md whitespace-nowrap flex items-center gap-1 backdrop-blur-md">
                 <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                 <span>{marker.label}</span>
               </div>
@@ -487,7 +487,7 @@ function LoadingFallback() {
 
 const defaultConfig: Required<Globe3DConfig> = {
   radius: 2,
-  globeColor: "#1a1a2e",
+  globeColor: "#18181b",
   textureUrl: DEFAULT_EARTH_TEXTURE,
   bumpMapUrl: DEFAULT_BUMP_TEXTURE,
   showAtmosphere: true,

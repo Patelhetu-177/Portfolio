@@ -129,7 +129,7 @@ export default function Hero() {
                 duration={2800}
                 containerClassName="w-full sm:w-auto"
                 borderClassName="bg-[radial-gradient(#38bdf8_0%,#0284c7_45%,transparent_75%)]"
-                className="bg-slate-900 px-7 text-[15px] font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-slate-100"
+                className="bg-slate-900 px-7 text-[15px] font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-zinc-100"
               >
                 View Projects <span className="ml-2 font-normal">→</span>
               </MovingBorderButton>
@@ -158,7 +158,7 @@ export default function Hero() {
               <DraggableCardContainer className="relative h-full w-full">
                 {HERO_CARDS.map((item) => (
                   <DraggableCardBody key={item.title} className={item.className}>
-                    <div className="overflow-hidden rounded-2xl bg-white/90 p-2.5 dark:bg-slate-900/90 border border-slate-200/50 dark:border-white/[0.06]">
+                    <div className="overflow-hidden rounded-2xl bg-white/90 p-2.5 dark:bg-zinc-900/90 border border-slate-200/50 dark:border-white/[0.06]">
                       <div className="relative h-44 w-44 sm:h-52 sm:w-52 rounded-xl overflow-hidden">
                         <Image
                           src={item.image}
@@ -169,7 +169,7 @@ export default function Hero() {
                           className="pointer-events-none object-cover object-top"
                         />
                       </div>
-                      <h3 className="mt-2.5 text-center text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                      <h3 className="mt-2.5 text-center text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-700 dark:text-zinc-300">
                         {item.title}
                       </h3>
                     </div>
@@ -181,21 +181,21 @@ export default function Hero() {
         </div>
 
         {/* ROW 2: Details Section at Bottom (Bio, Socials & Slow Moving Single-Line Highlights) */}
-        <div className="p-6 sm:p-7 rounded-3xl bg-slate-100/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 backdrop-blur-md space-y-6">
+        <div className="p-6 sm:p-7 rounded-3xl bg-slate-100/60 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 backdrop-blur-md space-y-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             {/* Detailed Bio */}
             <div className="lg:col-span-8 space-y-2">
               <p className="text-xs sm:text-sm text-slate-700 dark:text-[#a1a1aa] leading-relaxed font-normal">
                 I care about owning a feature end-to-end — schema design, API contracts, and the interface people actually touch — and making sure it holds up once real users start relying on it.
               </p>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-normal">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 leading-relaxed font-normal">
                 {PERSONAL_INFO.secondaryBio}
               </p>
             </div>
 
             {/* Social Connections */}
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-2.5 justify-center">
-              <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
                 Quick Connections:
               </span>
               <div className="flex flex-wrap items-center gap-2">
@@ -203,7 +203,7 @@ export default function Hero() {
                   href={PERSONAL_INFO.socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-slate-200 hover:text-blue-500 text-xs font-medium transition-colors"
+                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-zinc-200 hover:text-blue-500 text-xs font-medium transition-colors"
                 >
                   <Github className="w-3.5 h-3.5" />
                   <span>GitHub</span>
@@ -212,7 +212,7 @@ export default function Hero() {
                   href={PERSONAL_INFO.socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-slate-200 hover:text-[#0077b5] text-xs font-medium transition-colors"
+                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-zinc-200 hover:text-[#0077b5] text-xs font-medium transition-colors"
                 >
                   <Linkedin className="w-3.5 h-3.5" />
                   <span>LinkedIn</span>
@@ -221,7 +221,7 @@ export default function Hero() {
                   href={PERSONAL_INFO.socials.leetcode}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-slate-200 hover:text-amber-500 text-xs font-medium transition-colors"
+                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-zinc-200 hover:text-amber-500 text-xs font-medium transition-colors"
                 >
                   <Flame className="w-3.5 h-3.5 text-amber-500" />
                   <span>LeetCode (1572)</span>
@@ -230,7 +230,7 @@ export default function Hero() {
                   href={PERSONAL_INFO.socials.codechef}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-slate-200 hover:text-amber-600 text-xs font-medium transition-colors"
+                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-zinc-200 hover:text-amber-600 text-xs font-medium transition-colors"
                 >
                   <Code2 className="w-3.5 h-3.5 text-amber-600" />
                   <span>CodeChef (3★)</span>

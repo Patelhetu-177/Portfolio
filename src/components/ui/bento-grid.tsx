@@ -73,7 +73,7 @@ export const BentoGridItem = ({
       {/* Main card content */}
       <div
         className={cn(
-          "relative z-10 flex flex-col justify-between space-y-3.5 h-full rounded-2xl border border-slate-200/90 bg-white/90 p-5 backdrop-blur-md transition-colors duration-200 dark:border-white/[0.1] dark:bg-[#132337]/75 hover:border-blue-400 dark:hover:border-blue-500/40",
+          "relative z-10 flex flex-col justify-between space-y-3.5 h-full rounded-2xl border border-slate-200/90 bg-white/90 p-5 backdrop-blur-md transition-colors duration-200 dark:border-white/[0.1] dark:bg-[#161618]/75 hover:border-blue-400 dark:hover:border-blue-500/40",
           className
         )}
       >

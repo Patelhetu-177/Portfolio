@@ -42,7 +42,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           type={type}
           className={cn(
             `flex h-11 w-full border border-slate-200/50 dark:border-white/[0.08] bg-white dark:bg-white/[0.05] text-slate-900 dark:text-white rounded-xl px-3.5 py-2 text-sm file:border-0 file:bg-transparent 
-          file:text-sm file:font-medium placeholder:text-slate-400 dark:placeholder:text-slate-500 
+          file:text-sm file:font-medium placeholder:text-slate-400 dark:placeholder:text-zinc-500 
           focus-visible:outline-none focus-visible:border-sky-500 dark:focus-visible:border-sky-500
            disabled:cursor-not-allowed disabled:opacity-50 transition duration-200
            `,
@@ -93,7 +93,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       >
         <textarea
           className={cn(
-            `flex min-h-[100px] w-full border border-slate-200/50 dark:border-white/[0.08] bg-white dark:bg-white/[0.05] text-slate-900 dark:text-white rounded-xl px-3.5 py-2.5 text-sm placeholder:text-slate-400 dark:placeholder:text-slate-500 
+            `flex min-h-[100px] w-full border border-slate-200/50 dark:border-white/[0.08] bg-white dark:bg-white/[0.05] text-slate-900 dark:text-white rounded-xl px-3.5 py-2.5 text-sm placeholder:text-slate-400 dark:placeholder:text-zinc-500 
           focus-visible:outline-none focus-visible:border-sky-500 dark:focus-visible:border-sky-500
            disabled:cursor-not-allowed disabled:opacity-50 transition duration-200 resize-none
            `,
