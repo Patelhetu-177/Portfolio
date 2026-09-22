@@ -1,3 +1,4 @@
+import Preloader from "@/components/Preloader";
 import ParticleBackground from "@/components/ParticleBackground";
 import GrainOverlay from "@/components/GrainOverlay";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -17,6 +18,9 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden" suppressHydrationWarning>
+      {/* Intro loading overlay */}
+      <Preloader />
+
       {/* Scroll Progress Indicator */}
       <ScrollProgress />
 
