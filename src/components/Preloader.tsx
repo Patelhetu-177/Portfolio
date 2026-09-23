@@ -92,10 +92,6 @@ export default function Preloader() {
             />
           </motion.div>
 
-          {/* Status, bottom-left */}
-          <div className="absolute bottom-8 left-6 text-[11px] text-white/40 sm:left-10 sm:text-xs">
-            booting_portfolio<span className="animate-pulse">_</span>
-          </div>
 
           {/* Name, bottom-center — same wordmark styling as the Navbar/Footer logo, just small */}
           <motion.p

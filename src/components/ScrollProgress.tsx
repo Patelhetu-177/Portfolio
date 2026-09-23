@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 
@@ -39,8 +39,6 @@ export default function ScrollProgress() {
         className="relative h-full w-full origin-left bg-gradient-to-r from-sky-500 via-sky-400 to-sky-300"
         style={{ scaleX, opacity }}
       >
-        {/* Soft glow riding just ahead of the fill's leading edge */}
-        <span className="absolute right-0 top-1/2 h-4 w-4 -translate-y-1/2 translate-x-1/2 rounded-full bg-sky-400 blur-[6px] dark:bg-sky-300" />
       </motion.div>
     </div>
   );

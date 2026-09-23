@@ -22,6 +22,7 @@ import {
   Zap,
 } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { CometCard } from "@/components/ui/comet-card";
 
 interface SkillItem {
   name: string;
@@ -301,6 +302,7 @@ export default function Skills() {
 
             return (
               <RevealItem key={skill.name}>
+              <CometCard className="w-full" rotateDepth={12} translateDepth={8}>
               <div className="group p-4 rounded-2xl bg-slate-100/60 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.08] shadow-sm shadow-slate-200/60 dark:shadow-black/30 transition-colors duration-200">
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <div className={`p-2.5 rounded-xl ${styles.iconBg}`}>
@@ -330,6 +332,7 @@ export default function Skills() {
                   </span>
                 </div>
               </div>
+              </CometCard>
               </RevealItem>
             );
           })}
