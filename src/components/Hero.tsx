@@ -66,7 +66,7 @@ const MOVING_HIGHLIGHTS: MovingCardItem[] = [
     name: "6+ Production Apps",
     title: "Web, Mobile & AI",
     badge: "Live Platforms",
-    quote: "Engineered scalable platforms including FirstBookIt, AvatarAI, EventSphere and KARBYNX Carbon MRV infrastructure.",
+    quote: "Engineered scalable platforms including FirstBookIt, AttendMetric, AvatarAI, EventSphere, the Shri Raj School website and KARBYNX Carbon MRV infrastructure.",
     icon: Layers,
   },
   {

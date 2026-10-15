@@ -177,7 +177,7 @@ export const Card = ({
   const isDesktopApp =
     card.isDesktop !== undefined
       ? card.isDesktop
-      : !card.src.toLowerCase().includes("firstbookit");
+      : !/firstbookit|attendmetric/.test(card.src.toLowerCase());
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {

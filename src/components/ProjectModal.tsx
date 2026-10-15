@@ -25,7 +25,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       ? project.gallery
       : [{ image: project.image, title: project.title, description: project.description }];
 
-  const isDesktop = project.id !== "firstbookit";
+  const isDesktop = !["firstbookit", "attendmetric"].includes(project.id);
 
   const carouselCards = galleryItems.map((item, index) => (
     <Card

@@ -68,7 +68,7 @@ export const ProjectImageStack = ({
       }}
     >
       {cards.slice(0, 3).map((card, index) => {
-        const isMobilePortrait = card.image.toLowerCase().includes("firstbookit");
+        const isMobilePortrait = /firstbookit|attendmetric/.test(card.image.toLowerCase());
 
         return (
           <motion.div

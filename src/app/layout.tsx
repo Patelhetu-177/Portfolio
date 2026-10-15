@@ -83,6 +83,15 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} dark`}
       suppressHydrationWarning
     >
+      <head>
+        {/* Apply the saved theme before first paint so light-mode visitors never see a dark flash (incl. the preloader) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(localStorage.getItem('portfolio-theme')==='light'){var r=document.documentElement;r.classList.remove('dark');r.classList.add('light');r.style.colorScheme='light'}}catch(e){}",
+          }}
+        />
+      </head>
       <body
         className="min-h-screen flex flex-col bg-[#f8fafc] dark:bg-[#09090b] text-slate-900 dark:text-zinc-100 antialiased selection:bg-sky-500 selection:text-white"
         suppressHydrationWarning
