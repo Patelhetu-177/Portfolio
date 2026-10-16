@@ -13,7 +13,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
+  const [theme, setThemeState] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -23,13 +23,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         setThemeState(savedTheme);
         applyTheme(savedTheme);
       } else {
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const initialTheme: Theme = prefersDark ? "dark" : "dark";
-        setThemeState(initialTheme);
-        applyTheme(initialTheme);
+        // No saved choice yet: light is the default (a visitor's device setting is ignored on purpose)
+        setThemeState("light");
+        applyTheme("light");
       }
     } catch {
-      applyTheme("dark");
+      applyTheme("light");
     }
     setMounted(true);
   }, []);

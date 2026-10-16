@@ -2,7 +2,7 @@
 
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { BackgroundBoxes } from "@/components/ui/background-boxes";
+import { DoodleLayer } from "@/components/ParticleBackground";
 
 const MIN_MS = 1600;
 
@@ -60,15 +60,11 @@ export default function Preloader() {
           exit={{ clipPath: "inset(0 0 100% 0)" }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
         >
-          {/* Same isometric grid as the rest of the site (not a flat, straight
-              grid) — the exact BackgroundBoxes component used everywhere else */}
-          <BackgroundBoxes />
+          {/* Same hand-drawn doodle background as the rest of the site */}
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <DoodleLayer />
+          </div>
 
-          {/* Same ambient sky glows + grain as the rest of the site, so the
-              handoff into the Hero doesn't feel like a different surface */}
-          <div className="pointer-events-none absolute -top-40 left-1/2 h-[350px] w-[700px] -translate-x-1/2 rounded-full bg-sky-500/12 blur-[140px]" />
-          <div className="pointer-events-none absolute right-0 top-1/2 h-[400px] w-[500px] rounded-full bg-sky-500/8 blur-[160px]" />
-          <div className="pointer-events-none absolute bottom-0 left-0 h-[350px] w-[500px] rounded-full bg-sky-600/8 blur-[150px]" />
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-overlay"
             style={{
@@ -83,7 +79,7 @@ export default function Preloader() {
             initial={{ opacity: 0, scaleX: 0 }}
             animate={{ opacity: 1, scaleX: 1 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="h-px w-40 origin-center overflow-hidden bg-slate-900/10 dark:bg-white/10 sm:w-64"
+            className="relative z-10 h-px w-40 origin-center overflow-hidden bg-slate-900/10 dark:bg-white/10 sm:w-64"
           >
             <motion.div
               className="h-full bg-gradient-to-r from-sky-500 via-sky-400 to-sky-300"

@@ -80,15 +80,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} dark`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} light`}
       suppressHydrationWarning
     >
       <head>
-        {/* Apply the saved theme before first paint so light-mode visitors never see a dark flash (incl. the preloader) */}
+        {/* Light is the default. Apply a saved dark choice before first paint so dark-mode visitors never see a light flash (incl. the preloader) */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{if(localStorage.getItem('portfolio-theme')==='light'){var r=document.documentElement;r.classList.remove('dark');r.classList.add('light');r.style.colorScheme='light'}}catch(e){}",
+              "try{if(localStorage.getItem('portfolio-theme')==='dark'){var r=document.documentElement;r.classList.remove('light');r.classList.add('dark');r.style.colorScheme='dark'}}catch(e){}",
           }}
         />
       </head>
