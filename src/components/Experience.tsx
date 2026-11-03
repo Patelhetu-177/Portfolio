@@ -2,8 +2,14 @@
 
 import React from "react";
 import { EXPERIENCES } from "@/data/portfolioData";
-import { Briefcase, Calendar, MapPin, CheckCircle2 } from "lucide-react";
+import { Briefcase, Calendar, MapPin, CheckCircle2, Globe, Apple, Play } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+
+const LINK_META = {
+  web: { label: "Website", Icon: Globe },
+  ios: { label: "App Store", Icon: Apple },
+  android: { label: "Google Play", Icon: Play },
+} as const;
 
 export default function Experience() {
   return (
@@ -15,7 +21,7 @@ export default function Experience() {
             Where I&apos;ve Worked
           </h2>
           <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 mt-2">
-            Full-stack and mobile engineering at Vikartr Technologies, from financial calculators to satellite-powered carbon infrastructure.
+            Independent product work (attendance, sports booking and school platforms) and full-stack engineering at Vikartr Technologies, from financial calculators to satellite-powered carbon infrastructure.
           </p>
         </Reveal>
 
@@ -80,6 +86,27 @@ export default function Experience() {
                           </li>
                         ))}
                       </ul>
+
+                      {/* Links: website, App Store, Google Play */}
+                      {proj.links && proj.links.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {proj.links.map((l) => {
+                            const { label, Icon } = LINK_META[l.type];
+                            return (
+                              <a
+                                key={l.type}
+                                href={l.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 text-[11px] font-bold hover:bg-sky-500 hover:text-white transition-colors"
+                              >
+                                <Icon className="w-3.5 h-3.5" />
+                                {label}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      )}
 
                       {/* Tech stack badges */}
                       <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-200/40 dark:border-white/[0.04]">

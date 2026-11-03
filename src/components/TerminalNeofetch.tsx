@@ -31,7 +31,7 @@ export default function TerminalNeofetch() {
 
   const rows: [string, string][] = [
     ["Role", "Full Stack Developer"],
-    ["Company", "Vikartr Technologies"],
+    ["Company", "Independent (Self-Employed)"],
     ["Education", "B.Tech ICT, PDEU (CGPA 8.8)"],
     ["Stack", "MERN · Next.js · React Native"],
     ["Also", "GenAI · n8n · AWS · Docker"],

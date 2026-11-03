@@ -87,7 +87,7 @@ export default function CommandPalette() {
       { id: "nav-about", label: "Go to About", description: "Education, competitive programming & GitHub activity", icon: <GraduationCap className="w-4 h-4" />, action: goTo("about"), group: "Navigate" },
       { id: "nav-stats", label: "Go to Live Stats", description: "Real-time LeetCode & GitHub stats, heatmap included", icon: <Activity className="w-4 h-4" />, action: goTo("stats"), group: "Navigate" },
       { id: "nav-skills", label: "Go to Skills", description: "Languages, frameworks & tools I use", icon: <Code2 className="w-4 h-4" />, action: goTo("skills"), group: "Navigate" },
-      { id: "nav-experience", label: "Go to Experience", description: "Work history at Vikartr Technologies", icon: <Briefcase className="w-4 h-4" />, action: goTo("experience"), group: "Navigate" },
+      { id: "nav-experience", label: "Go to Experience", description: "Independent work & Vikartr Technologies", icon: <Briefcase className="w-4 h-4" />, action: goTo("experience"), group: "Navigate" },
       { id: "nav-projects", label: "Go to Projects", description: "FirstBookIt, AvatarAI, EventSphere & more", icon: <FolderGit2 className="w-4 h-4" />, action: goTo("projects"), group: "Navigate" },
       { id: "nav-terminal", label: "Go to Terminal", description: "Interactive dev console — try real commands", icon: <TerminalIcon className="w-4 h-4" />, action: goTo("terminal"), group: "Navigate" },
       { id: "nav-contact", label: "Go to Contact", description: "Email, phone & the message form", icon: <Mail className="w-4 h-4" />, action: goTo("contact"), group: "Navigate" },

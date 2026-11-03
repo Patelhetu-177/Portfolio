@@ -25,11 +25,17 @@ export interface SkillCategory {
   skills: { name: string; level: string; percent: number; isTop?: boolean }[];
 }
 
+export interface ProjectLink {
+  type: "web" | "ios" | "android";
+  url: string;
+}
+
 export interface ExperienceProject {
   name: string;
   subtitle: string;
   points: string[];
   stack: string[];
+  links?: ProjectLink[];
 }
 
 export interface Experience {
@@ -295,9 +301,59 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 
 export const EXPERIENCES: Experience[] = [
   {
+    company: "Self-Employed",
+    role: "Independent Software Developer",
+    period: "July 2026 - Present",
+    location: "Gujarat, India",
+    type: "Self-Employed",
+    projects: [
+      {
+        name: "AttendMetric ",
+        subtitle: "Seat-Verified Smart Attendance Platform",
+        points: [
+          "Built a real-time seat-verified attendance platform for colleges with anti-proxy security, live on iOS, Android and web.",
+          "Implemented real-time updates and push notifications with Socket.IO, plus optional seat sharing with professor-reviewed proxy detection, protected against race conditions using per-seat database locks.",
+          "Shipped to the App Store and Google Play with over-the-air updates via EAS, and deployed the web app and API on AWS with automated GitHub Actions deployments.",
+        ],
+        stack: ["Next.js", "React Native (Expo)", "Node.js", "Express", "Prisma", "PostgreSQL", "Redis", "Socket.IO", "AWS"],
+        links: [
+          { type: "web", url: "https://attendmetric.com" },
+          { type: "ios", url: "https://apps.apple.com/in/app/attendmetric/id6811812897" },
+          { type: "android", url: "https://play.google.com/store/apps/details?id=com.sportswalla264.AttendMetricAPP" },
+        ],
+      },
+      {
+        name: "FirstBookIt",
+        subtitle: "Sports Turf Booking & Tournament App",
+        points: [
+          "Built a sports turf booking and tournament app with Razorpay payments and live scoring, live on iOS, Android and web.",
+          "Engineered the core booking flow: venue discovery, court/slot selection, coupon codes and Razorpay checkout with bill splitting among multiple players.",
+          "Developed a tournament management system for cricket and racquet sports with live ball-by-ball/rally scoring, auto-scheduling and shareable live match reports.",
+        ],
+        stack: ["React Native (Expo)", "TypeScript", "Node.js", "Express", "Prisma", "PostgreSQL", "Razorpay", "AWS", "n8n"],
+        links: [
+          { type: "web", url: "https://www.firstbookit.in/" },
+          { type: "ios", url: "https://apps.apple.com/in/app/firstbookit/id6789637699" },
+          { type: "android", url: "https://play.google.com/store/apps/details?id=com.sportswalla.firstbookit" },
+        ],
+      },
+      {
+        name: "Shri Raj School Website",
+        subtitle: "Staff-Editable School Website on WordPress",
+        points: [
+          "Built and launched the Shri Raj School website on WordPress with a custom staff CMS, enquiry forms and SEO.",
+          "Created a custom plugin with admin settings screens and custom post types so non-technical staff manage events, facilities and the home page without code.",
+          "Handled the full launch on Hostinger: migration, DNS, SSL, Google Workspace email, reCAPTCHA-protected forms, sitemap and Search Console.",
+        ],
+        stack: ["WordPress", "PHP", "JavaScript", "CSS", "Contact Form 7", "Rank Math SEO", "Hostinger"],
+        links: [{ type: "web", url: "https://shrirajschool.com" }],
+      },
+    ],
+  },
+  {
     company: "Vikartr Technologies LLP",
     role: "Full Stack Developer",
-    period: "January 2026 - Present",
+    period: "January 2026 - June 2026",
     location: "Gujarat, India",
     type: "Internship",
     projects: [

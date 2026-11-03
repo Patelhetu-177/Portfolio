@@ -162,7 +162,7 @@ export default function BentoAbout() {
     {
       title: "Products Shipped on GitHub",
       description:
-        "FirstBookIt, AvatarAI, and EventSphere — cross-platform products shipped in TypeScript.",
+        "FirstBookIt, AvatarAI, and AttendMetric — cross-platform products shipped in TypeScript.",
       header: (
         <div className="flex w-full flex-col gap-3 pb-3 mb-2 border-b border-slate-100 dark:border-white/[0.06]">
           <div className="flex items-center justify-between mb-2">
@@ -202,8 +202,8 @@ export default function BentoAbout() {
               <span className="text-[9px] text-purple-600 dark:text-purple-400 font-semibold">Next.js 14 + PINECONE</span>
             </div>
             <div className="p-2 rounded-xl bg-white/70 dark:bg-white/[0.07] flex items-center justify-between">
-              <span className="font-bold text-slate-800 dark:text-zinc-200">EventSphere</span>
-              <span className="text-[9px] text-sky-600 dark:text-sky-400 font-semibold">Next.js + Prisma</span>
+              <span className="font-bold text-slate-800 dark:text-zinc-200">AttendMetric</span>
+              <span className="text-[9px] text-sky-600 dark:text-sky-400 font-semibold">Next.js + Expo</span>
             </div>
           </div>
         </div>
@@ -216,7 +216,7 @@ export default function BentoAbout() {
     {
       title: "Industry Experience",
       description:
-        "Full Stack Developer at Vikartr Technologies since January 2026, building web and mobile platforms end to end.",
+        "Full Stack Developer intern at Vikartr Technologies (Jan to Jun 2026), now building and shipping products independently.",
       header: (
         <div className="flex w-full flex-col gap-3 pb-3 mb-2 border-b border-slate-100 dark:border-white/[0.06]">
           <div className="flex items-center justify-between mb-2">
@@ -225,7 +225,7 @@ export default function BentoAbout() {
               <span className="font-bold">VIKARTR TECHNOLOGIES LLP</span>
             </div>
             <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full font-bold">
-              Jan 2026 – Present
+              Jan 2026 – Jun 2026
             </span>
           </div>
 

@@ -74,7 +74,7 @@ export default function TerminalSection() {
           <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">stats</span> - Live LeetCode &amp; GitHub numbers</div>
           <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">neofetch</span> - System-info style summary</div>
           <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">projects</span> - FirstBookIt, AvatarAI, EventSphere, etc.</div>
-          <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">experience</span> - Vikartr Technologies production work</div>
+          <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">experience</span> - Independent products &amp; Vikartr Technologies work</div>
           <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">education</span> - PDEU B.Tech in ICT (CGPA 8.8)</div>
           <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">contact</span> - Email, phone &amp; profile links</div>
           <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">theme</span> - Toggle Dark/Light mode</div>
