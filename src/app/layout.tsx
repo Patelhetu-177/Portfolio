@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
+import AnalyticsConsent from "@/components/AnalyticsConsent";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://hetupatel.vercel.app";
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -93,7 +96,7 @@ export const metadata: Metadata = {
     google:
       process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
       process.env.GOOGLE_SITE_VERIFICATION ||
-      "",
+      "JsXXSGRFfnRHcUObEFbd_ZEwBmeEaW8U4OB5F8LqviY",
   },
 };
 
@@ -203,6 +206,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <AnalyticsConsent measurementId={GA_MEASUREMENT_ID} />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
