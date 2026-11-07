@@ -63,6 +63,7 @@ export const PERSONAL_INFO = {
     linkedin: "https://www.linkedin.com/in/hetu-patel-61a8b1288/",
     leetcode: "https://leetcode.com/u/Hetu_patel_17/",
     codechef: "https://www.codechef.com/users/hetu_cp17",
+    instagram: "https://www.instagram.com/_hetu_1707/",
   },
   stats: [
     { label: "LeetCode Rating", value: "1572", subtext: "500+ Solved" },

@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 
-const SITE_URL = "https://hetupatel.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://hetupatel.vercel.app";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,50 +26,153 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Hetu Patel | Full-Stack Web Developer & Problem Solver",
-  description: "Portfolio of Hetu Patel - ICT Engineering graduate of PDEU, Full-Stack Developer (Next.js, React, Node.js, MongoDB, TailwindCSS), and Competitive Programmer with 500+ DSA solutions.",
-  keywords: ["Hetu Patel", "Full Stack Developer", "Next.js", "React", "Portfolio", "PDEU", "DSA", "LeetCode", "Vikartr"],
+  title: {
+    default: "Hetu Patel | Full-Stack Developer & Software Engineer",
+    template: "%s | Hetu Patel",
+  },
+  description:
+    "Official portfolio of Hetu Patel — Full-Stack Developer specializing in Next.js, React Native, Node.js, GenAI, and real-time systems. Competitive Programmer with 500+ LeetCode solutions.",
+  keywords: [
+    "Hetu Patel",
+    "Hetu Patel Portfolio",
+    "Hetu Patel Developer",
+    "Hetu Patel LeetCode",
+    "Hetu Patel GitHub",
+    "Hetu Patel LinkedIn",
+    "Full Stack Developer",
+    "Next.js Developer",
+    "React Native Developer",
+    "Software Engineer Portfolio",
+    "PDEU ICT",
+    "MERN Stack Developer",
+    "Generative AI Developer",
+    "Competitive Programming",
+  ],
   authors: [{ name: "Hetu Patel", url: SITE_URL }],
+  creator: "Hetu Patel",
+  publisher: "Hetu Patel",
   alternates: {
     canonical: "/",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
-    title: "Hetu Patel | Full-Stack Web Developer",
-    description: "Personal portfolio and showcase of projects, skills, and experience by Hetu Patel.",
+    title: "Hetu Patel | Full-Stack Developer & Software Engineer",
+    description:
+      "Explore production-ready web apps, mobile applications, GenAI tools, and competitive programming achievements by Hetu Patel.",
     url: SITE_URL,
-    siteName: "Hetu Patel",
-    type: "website",
+    siteName: "Hetu Patel Portfolio",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Hetu Patel — Full-Stack Web Developer",
+      },
+    ],
     locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hetu Patel | Full-Stack Web Developer",
-    description: "Personal portfolio and showcase of projects, skills, and experience by Hetu Patel.",
+    title: "Hetu Patel | Full-Stack Developer & Software Engineer",
+    description:
+      "Explore production-ready web apps, mobile applications, GenAI tools, and competitive programming achievements by Hetu Patel.",
+    images: ["/opengraph-image"],
+  },
+  verification: {
+    google:
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+      process.env.GOOGLE_SITE_VERIFICATION ||
+      "",
   },
 };
 
-const personJsonLd = {
+const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: PERSONAL_INFO.name,
-  jobTitle: "Full Stack Developer",
-  url: SITE_URL,
-  email: `mailto:${PERSONAL_INFO.email}`,
-  sameAs: [
-    PERSONAL_INFO.socials.github,
-    PERSONAL_INFO.socials.linkedin,
-    PERSONAL_INFO.socials.leetcode,
-    PERSONAL_INFO.socials.codechef,
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${SITE_URL}/#person`,
+      name: PERSONAL_INFO.name,
+      alternateName: ["Hetu", "Patel Hetu"],
+      url: SITE_URL,
+      image: `${SITE_URL}${PERSONAL_INFO.avatarImage}`,
+      jobTitle: "Full-Stack Web & Mobile Developer",
+      description: PERSONAL_INFO.summary,
+      email: `mailto:${PERSONAL_INFO.email}`,
+      telephone: PERSONAL_INFO.phoneDisplay,
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "Pandit Deendayal Energy University (PDEU)",
+        sameAs: "https://www.pdeu.ac.in/",
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Gandhinagar",
+        addressRegion: "Gujarat",
+        addressCountry: "IN",
+      },
+      sameAs: [
+        PERSONAL_INFO.socials.github,
+        PERSONAL_INFO.socials.linkedin,
+        PERSONAL_INFO.socials.leetcode,
+        PERSONAL_INFO.socials.codechef,
+        ...(PERSONAL_INFO.socials.instagram ? [PERSONAL_INFO.socials.instagram] : []),
+      ].filter(Boolean),
+      knowsAbout: [
+        "Full-Stack Web Development",
+        "React.js",
+        "Next.js",
+        "React Native",
+        "TypeScript",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "PostgreSQL",
+        "Prisma",
+        "Generative AI",
+        "n8n Workflow Automation",
+        "Competitive Programming",
+        "Data Structures & Algorithms",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Hetu Patel Portfolio",
+      description: "Official portfolio of Hetu Patel, Full Stack Developer & Competitive Programmer",
+      publisher: {
+        "@id": `${SITE_URL}/#person`,
+      },
+      inLanguage: "en-US",
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${SITE_URL}/#profilepage`,
+      url: SITE_URL,
+      name: "Hetu Patel | Full-Stack Developer Portfolio",
+      isPartOf: {
+        "@id": `${SITE_URL}/#website`,
+      },
+      about: {
+        "@id": `${SITE_URL}/#person`,
+      },
+      mainEntity: {
+        "@id": `${SITE_URL}/#person`,
+      },
+    },
   ],
-  address: {
-    "@type": "PostalAddress",
-    addressRegion: "Gujarat",
-    addressCountry: "IN",
-  },
 };
 
 export default function RootLayout({
@@ -98,7 +201,7 @@ export default function RootLayout({
       >
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <ThemeProvider>{children}</ThemeProvider>
       </body>

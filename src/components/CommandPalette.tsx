@@ -18,7 +18,7 @@ import {
   CornerDownLeft,
   Activity,
 } from "lucide-react";
-import { Github, Linkedin } from "@/components/Icons";
+import { Github, Linkedin, Instagram } from "@/components/Icons";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import { useTheme } from "@/context/ThemeContext";
 
@@ -95,6 +95,7 @@ export default function CommandPalette() {
       { id: "link-linkedin", label: "Open LinkedIn", description: "Professional profile", icon: <Linkedin className="w-4 h-4" />, action: openUrl(PERSONAL_INFO.socials.linkedin), group: "Links" },
       { id: "link-leetcode", label: "Open LeetCode", description: "500+ problems solved", hint: "1572 rating", icon: <ExternalLink className="w-4 h-4" />, action: openUrl(PERSONAL_INFO.socials.leetcode), group: "Links" },
       { id: "link-codechef", label: "Open CodeChef", description: "Competitive programming profile", hint: "3★ 1653", icon: <ExternalLink className="w-4 h-4" />, action: openUrl(PERSONAL_INFO.socials.codechef), group: "Links" },
+      { id: "link-instagram", label: "Open Instagram", description: "Personal & tech updates", hint: "@_hetu_1707", icon: <Instagram className="w-4 h-4 text-pink-500" />, action: openUrl(PERSONAL_INFO.socials.instagram), group: "Links" },
       { id: "link-resume", label: "Download Resume", description: "Opens the PDF in a new tab", icon: <FileDown className="w-4 h-4" />, action: openUrl(PERSONAL_INFO.resumeUrl), group: "Links" },
       {
         id: "theme-toggle",

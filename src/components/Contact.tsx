@@ -8,7 +8,7 @@ import {
   Check,
   FileDown,
 } from "lucide-react";
-import { Github, Linkedin } from "@/components/Icons";
+import { Github, Linkedin, Instagram } from "@/components/Icons";
 import { Label } from "@/components/ui/label";
 import { Input, Textarea } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -189,6 +189,18 @@ export default function Contact() {
                 <Linkedin className="w-3.5 h-3.5 text-[#0077b5]" />
                 <span>LinkedIn</span>
               </a>
+
+              {PERSONAL_INFO.socials.instagram && (
+                <a
+                  href={PERSONAL_INFO.socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-white/[0.06] text-xs font-medium text-slate-800 dark:text-zinc-200 hover:text-pink-500 transition-colors"
+                >
+                  <Instagram className="w-3.5 h-3.5 text-pink-500" />
+                  <span>Instagram</span>
+                </a>
+              )}
             </div>
 
             {/* 3D Interactive Globe */}

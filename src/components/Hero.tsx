@@ -12,7 +12,7 @@ import {
   Briefcase,
   GraduationCap,
 } from "lucide-react";
-import { Github, Linkedin } from "@/components/Icons";
+import { Github, Linkedin, Instagram } from "@/components/Icons";
 import { DraggableCardContainer, DraggableCardBody } from "@/components/ui/DraggableCard";
 import { InfiniteMovingCards, MovingCardItem } from "@/components/ui/infinite-moving-cards";
 import { Button as MovingBorderButton } from "@/components/ui/moving-border";
@@ -235,6 +235,17 @@ export default function Hero() {
                   <Code2 className="w-3.5 h-3.5 text-amber-600" />
                   <span>CodeChef (3★)</span>
                 </a>
+                {PERSONAL_INFO.socials.instagram && (
+                  <a
+                    href={PERSONAL_INFO.socials.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 dark:bg-white/[0.05] text-slate-800 dark:text-zinc-200 hover:text-pink-500 text-xs font-medium transition-colors"
+                  >
+                    <Instagram className="w-3.5 h-3.5 text-pink-500" />
+                    <span>Instagram</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>
