@@ -187,7 +187,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "avatarai",
-    title: "AvatarAI Studio",
+    title: "AvatarAI",
     tagline: "All-in-One GenAI Platform & Interactive Productivity Suite",
     description: "An advanced multi-modal AI platform built using Next.js 14, Gemini AI, Clerk, and Pinecone Vector Database for AI companion avatars, mock voice interviews, and intelligent PDF/Excel document extraction.",
     category: "GenAI & Tools",
@@ -236,7 +236,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "namaste",
-    title: "Namaste Chat",
+    title: "Namaste",
     tagline: "Real-Time WebSocket Instant Messaging Application",
     description: "Secure, ultra-responsive real-time communication platform featuring low-latency peer messaging, live online presence tracking, responsive UI, and authenticated sessions.",
     category: "Real-Time Systems",
