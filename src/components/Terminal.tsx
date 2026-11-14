@@ -75,7 +75,7 @@ export default function TerminalSection() {
           <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">neofetch</span> - System-info style summary</div>
           <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">projects</span> - FirstBookIt, AvatarAI, EventSphere, etc.</div>
           <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">experience</span> - Independent products &amp; Vikartr Technologies work</div>
-          <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">education</span> - PDEU B.Tech in ICT (CGPA 8.8)</div>
+          <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">education</span> - PDEU B.Tech in ICT (CGPA 8.83)</div>
           <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">contact</span> - Email, phone &amp; profile links</div>
           <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">theme</span> - Toggle Dark/Light mode</div>
           <div><span className="text-sky-600 dark:text-sky-400 font-mono font-bold">cat resume</span> - Resume summary &amp; PDF link</div>
@@ -178,7 +178,7 @@ export default function TerminalSection() {
           <div className="p-3.5 rounded-xl bg-white dark:bg-zinc-800/80 border border-slate-200 dark:border-zinc-700">
             <div className="font-bold text-sky-600 dark:text-sky-400 text-sm">Pandit Deendayal Energy University (PDEU)</div>
             <div className="text-slate-700 dark:text-zinc-200 mt-0.5">B.Tech in Information, Communication and Technology (ICT)</div>
-            <div className="text-emerald-600 dark:text-emerald-400 font-semibold mt-1">CGPA: 8.8 / 10.0 • Period: Aug 2022 – May 2026</div>
+            <div className="text-emerald-600 dark:text-emerald-400 font-semibold mt-1">CGPA: 8.83 / 10.0 • Period: Aug 2022 – May 2026</div>
           </div>
           <div className="p-3.5 rounded-xl bg-white dark:bg-zinc-800/80 border border-slate-200 dark:border-zinc-700">
             <div className="font-bold text-sky-600 dark:text-sky-400 text-sm">Uma Higher Secondary School, Visnagar</div>

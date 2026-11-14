@@ -56,7 +56,7 @@ const MOVING_HIGHLIGHTS: MovingCardItem[] = [
     icon: Code2,
   },
   {
-    name: "Academic CGPA 8.8",
+    name: "Academic CGPA 8.83",
     title: "PDEU Gandhinagar",
     badge: "B.Tech ICT",
     quote: "Completed B.Tech in Information, Communication & Technology with strong core foundations in Distributed Systems and Algorithms.",

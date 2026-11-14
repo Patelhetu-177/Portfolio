@@ -68,7 +68,7 @@ export const PERSONAL_INFO = {
   stats: [
     { label: "LeetCode Rating", value: "1572", subtext: "500+ Solved" },
     { label: "CodeChef Rating", value: "3★ (1653)", subtext: "Active Competitive Coder" },
-    { label: "Academic CGPA", value: "8.8", subtext: "B.Tech ICT @ PDEU" },
+    { label: "Academic CGPA", value: "8.83", subtext: "B.Tech ICT @ PDEU" },
     { label: "Production Platforms", value: "6+", subtext: "Web, Mobile & AI" },
   ],
 };

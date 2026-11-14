@@ -38,7 +38,7 @@ export default function BentoAbout() {
     {
       title: "Academic Foundation",
       description:
-        "B.Tech in ICT at PDEU — CGPA 8.8/10, on a 92% HSC score and ACPC rank 846.",
+        "B.Tech in ICT at PDEU — CGPA 8.83/10, on a 92% HSC score and ACPC rank 846.",
       header: (
         <div className="flex w-full flex-col gap-3 pb-3 mb-2 border-b border-slate-100 dark:border-white/[0.06]">
           <div className="flex items-center justify-between mb-2">
